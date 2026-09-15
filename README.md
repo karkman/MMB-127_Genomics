@@ -1,10 +1,13 @@
-# MMB-114 Exploratory microbial research - lab course
+# MMB-127 - Exploratory microbial genomics
+
+:woman_technologist:  __Juliana Botero Cardona__  
+:classical_building: University of Helsinki  
 
 :man_technologist:  __Antti Karkman__  
 :classical_building: University of Helsinki  
 :envelope: [antti.karkman@helsinki.fi](mailto:antti.karkman@helsinki.fi)
 
-Genome analysis module of the course "MMB-114 Exploratory microbial research - lab course" of the University of Helsinki.
+Bacterial genomics hands-on course at the University of Helsinki.
 
 ## Learning outcomes
 
