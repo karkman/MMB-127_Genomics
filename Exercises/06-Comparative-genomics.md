@@ -1,4 +1,4 @@
-# Day 7: Comparative genomics
+# Day 6: Comparative genomics
 
 ## Is your genome a new genus, new species, new strain or new isolate?
 
