@@ -1,10 +1,10 @@
 # Day 6: Comparative genomics
-To determine the taxonomic position of the genome, we first extracted the 16S rRNA gene and compared its sequence with those available in the SILVA database. We then compared the genome with reference genomes of type strains by calculating digital DNA–DNA hybridization (dDDH) and average nucleotide identity (ANI) values.
+To determine the taxonomic position of the genome, we will first extract the 16S rRNA gene and compared its sequence with those available in the SILVA database. We will then compare the genome with reference genomes of type strains by calculating digital DNA–DNA hybridization (dDDH) and average nucleotide identity (ANI) values.
 
 ##Extract 16S rRNA gene from the genome
 * Count genes
 ```bash
-grep -c "16S ribosomal RNA"
+grep -c "16S ribosomal RNA" bakta.ffn
 ```
 * Extract genes from the genome
 ```bash
