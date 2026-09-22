@@ -26,6 +26,7 @@ sina -i 16S_gene.fasta -o aligned.fasta \
   --meta-fmt csv
 ```
 Alternatively, you can use the SILVA aligner webservice for sequences shorter than 1000bp
+(https://www.arb-silva.de/aligner)
 ![](../images/SILVA.png).
 
 
@@ -41,7 +42,7 @@ Alternatively, you can use the SILVA aligner webservice for sequences shorter th
 * Please remember to include your email address in the contact details. You will receive the results by email.
 ![](../images/dDDH.png).
 
-### Calcualte average nucleotide identity (ANI)
+### Calculate average nucleotide identity (ANI)
 * Go to https://www.ezbiocloud.net/tools/ani 
 * Upload your genome under “1. Genome sequence A” by clicking “Upload FASTA.”
 * Upload the reference genome under “2. Genome sequence B” by clicking “Upload FASTA.”
@@ -52,5 +53,4 @@ Alternatively, you can use the SILVA aligner webservice for sequences shorter th
 
 Based on the ANI and dDDH values, does the genome represent a previously described species or a potentially novel species?
 Does the genome represent a novel strain?
-
 
