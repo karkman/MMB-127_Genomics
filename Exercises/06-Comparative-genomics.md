@@ -59,6 +59,7 @@ Alternatively, you can use the SILVA aligner webservice for sequences shorter th
 * Click “Calculate.”
 * Copy the ANI value and paste it into an Excel file.
 * Repeat the same process with the other reference genomes.
+
 ![](../images/excel_ANI.png).
 
 Based on the ANI and dDDH values, does the genome represent a previously described species or a potentially novel species?
