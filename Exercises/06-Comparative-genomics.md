@@ -1,21 +1,29 @@
 # Day 6: Comparative genomics
+
 To determine the taxonomic position of the genome, we will first extract the 16S rRNA gene and compared its sequence with those available in the SILVA database. We will then compare the genome with reference genomes of type strains by calculating digital DNA–DNA hybridization (dDDH) and average nucleotide identity (ANI) values.
 
-##Extract 16S rRNA gene from the genome
+## Extract 16S rRNA gene from the genome
+
 * Count genes
+
 ```bash
 grep -c "16S ribosomal RNA" bakta.ffn
 ```
+
 * Extract genes from the genome
+
 ```bash
 seqkit grep -n -r -p "16S ribosomal RNA" bakta.ffn > 16S_gene.fasta
 ```
+
 * 16S rRNA gene length
+
 ```bash
 seqkit stat 16S_gene.fasta
 ```
 
 ## Alignment of the 16S rRNA gene with the closest phylogenetic neighbor identified in the SILVA database
+
 ```bash
 sina -i 16S_gene.fasta -o aligned.fasta \
   --db SILVA_DATABASE.arb -p 4 \
@@ -25,10 +33,10 @@ sina -i 16S_gene.fasta -o aligned.fasta \
   --calc-idty \
   --meta-fmt csv
 ```
+
 Alternatively, you can use the SILVA aligner webservice for sequences shorter than 1000bp
 (https://www.arb-silva.de/aligner)
 ![](../images/SILVA.png).
-
 
 
 1. How many genes are present in the genome?
@@ -37,12 +45,14 @@ Alternatively, you can use the SILVA aligner webservice for sequences shorter th
 4. What is the percentage of 16S rRNA sequence identity with the closest phylogenetic neighbor?
 5. Do the two organisms belong to the same genus?
 
-### Calculate DNA–DNA hybridization (dDDH)
+## Calculate DNA–DNA hybridization (dDDH)
+
 * Submit your genomes in https://ggdc.dsmz.de/ggdc.php
 * Please remember to include your email address in the contact details. You will receive the results by email.
 ![](../images/dDDH.png).
 
-### Calculate average nucleotide identity (ANI)
+## Calculate average nucleotide identity (ANI)
+
 * Go to https://www.ezbiocloud.net/tools/ani 
 * Upload your genome under “1. Genome sequence A” by clicking “Upload FASTA.”
 * Upload the reference genome under “2. Genome sequence B” by clicking “Upload FASTA.”
@@ -53,4 +63,3 @@ Alternatively, you can use the SILVA aligner webservice for sequences shorter th
 
 Based on the ANI and dDDH values, does the genome represent a previously described species or a potentially novel species?
 Does the genome represent a novel strain?
-
