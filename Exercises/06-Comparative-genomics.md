@@ -1,53 +1,5 @@
 # Day 6: Comparative genomics
-<<<<<<< HEAD
 To determine the taxonomic position of the genome. We will compare it with reference genomes of type strains by calculating digital DNA–DNA hybridization (dDDH) and average nucleotide identity (ANI) values.
-=======
-
-To determine the taxonomic position of the genome, we will first extract the 16S rRNA gene and compared its sequence with those available in the SILVA database. We will then compare the genome with reference genomes of type strains by calculating digital DNA–DNA hybridization (dDDH) and average nucleotide identity (ANI) values.
-
-## Extract 16S rRNA gene from the genome
-
-* Count genes
-
-```bash
-grep -c "16S ribosomal RNA" bakta.ffn
-```
-
-* Extract genes from the genome
-
-```bash
-seqkit grep -n -r -p "16S ribosomal RNA" bakta.ffn > 16S_gene.fasta
-```
-
-* 16S rRNA gene length
-
-```bash
-seqkit stat 16S_gene.fasta
-```
-
-## Alignment of the 16S rRNA gene with the closest phylogenetic neighbor identified in the SILVA database
-
-```bash
-sina -i 16S_gene.fasta -o aligned.fasta \
-  --db SILVA_DATABASE.arb -p 4 \
-  --turn all \
-  --search \
-  --lca-fields tax_slv,tax_ltp,tax_gtdb \
-  --calc-idty \
-  --meta-fmt csv
-```
-
-Alternatively, you can use the SILVA aligner webservice for sequences shorter than 1000bp
-(https://www.arb-silva.de/aligner)
-![](../images/SILVA.png).
-
-
-1. How many genes are present in the genome?
-2. How many nucleotides does the 16S rRNA gene contain?
-3. What is the closest phylogenetic neighbor identified in the SILVA database?
-4. What is the percentage of 16S rRNA sequence identity with the closest phylogenetic neighbor?
-5. Do the two organisms belong to the same genus?
->>>>>>> 0fdb9a92efe23105bdd53bd663e9d5d9283c2f06
 
 ## Calculate DNA–DNA hybridization (dDDH)
 
