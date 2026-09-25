@@ -5,17 +5,17 @@ We will compare the functional annotations of multiple genomes to identify diffe
 ## KEGG-based functional analysis of multiple genomes
 ```bash
 mkdir -p kegg_ids
-grep -o "KEGG:K....." genome_1.gff3 | tr ":" "\t" > genome_1_kegg_ids.txt 
-grep -o "KEGG:K....." genome_2.gff3 | tr ":" "\t" > genome_2_kegg_ids.txt
-grep -o "KEGG:K....." genome_3.gff3 | tr ":" "\t" > genome_3_kegg_ids.txt
+grep -o "KEGG:K....." genome_1.gff3 | tr ":" "\t" > kegg_ids/genome_1_kegg_ids.txt 
+grep -o "KEGG:K....." genome_2.gff3 | tr ":" "\t" > kegg_ids/genome_2_kegg_ids.txt
+grep -o "KEGG:K....." genome_3.gff3 | tr ":" "\t" > kegg_ids/genome_3_kegg_ids.txt
 ```
 
 Select column 1 with kegg id and add column 2 with colors
 ```bash
-awk '{print $2 "\tblue"}' genome_1.gff3_kegg_ids.txt> genome_1.gff3_kegg_ids_color.txt
-awk '{print $2 "\tred"}' genome_2.gff3_kegg_ids.txt> genome_2.gff3_kegg_ids_color.txt
-awk '{print $2 "\tpink"}' genome_2.gff3_kegg_ids.txt> genome_3.gff3_kegg_ids_color.txt
-cat genome_1.gff3_kegg_ids_color.txt genome_2.gff3_kegg_ids_color.txt genome_3.gff3_kegg_ids_color.txt > kegg_mapper_color.txt
+awk '{print $2 "\tblue"}' genome_1.gff3_kegg_ids.txt> kegg_ids/genome_1.gff3_kegg_ids_color.txt
+awk '{print $2 "\tred"}' genome_2.gff3_kegg_ids.txt> kegg_ids/genome_2.gff3_kegg_ids_color.txt
+awk '{print $2 "\tpink"}' genome_2.gff3_kegg_ids.txt> kegg_ids/genome_3.gff3_kegg_ids_color.txt
+cat kegg_ids/genome_1.gff3_kegg_ids_color.txt kegg_ids/genome_2.gff3_kegg_ids_color.txt kegg_ids/genome_3.gff3_kegg_ids_color.txt > kegg_mapper_color.txt
 ```
 
 submit file  `kegg_mapper_color.txt` to (https://www.genome.jp/kegg/mapper/color.html)
