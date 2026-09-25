@@ -38,6 +38,6 @@ Day 3: Genome assembly | [Lecture slides](lectures/04_Genome_assembly.pdf) | [Ex
 Day 4: Genome annotation | [Lecture slides](lectures/05_Genome_annotation.pdf) | [Exercises](Exercises/04-Genome-annotation.md) |
 Day 5: Metabolic pathway analysis | [Lecture slides](lectures/06_Metabolic_pathways.pdf) | [Exercises](Exercises/05-Metabolic-pathways.md) |
 Day 6: Comparative genomics |  | [Exercises](Exercises/06-Comparative-genomics.md) |
-Day 7: Genome annotation |  |  |
+Day 7: Genome annotation |  | [Exercises](Exercises/06-Comparative-genomics.md) |
 Day 8: Pangenomics |  |  |
 Day 9: Wrap up |  |  |
