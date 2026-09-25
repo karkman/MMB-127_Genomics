@@ -27,10 +27,8 @@ Do they differ in main metabolism and secondary metabolism?
 
 ## MacSynfinder
 
-Determine Bacterial scretion systems in your bacteria 
+Determine Bacterial scretion systems in your bacteria (https://github.com/gem-pasteur/macsyfinder)
 ![](../images/secretion_systems.png)
-
-(https://github.com/gem-pasteur/macsyfinder) Identify bacterial secretion systems
 
 ```bash
 mkdir -p macsyfinder
