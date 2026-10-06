@@ -18,5 +18,15 @@ To determine the taxonomic position of the genome. We will compare it with refer
 
 ![](../images/excel_ANI.png).
 
+### For the brave ones who want to use the terminal
+```bash
+java -jar OAU.jar -u path/to/usearch -fd path/to/genomes/ -n 8 -fmt matrix -o ani_matrix.txt
+```
+## Average amino acid identity 
+```bash
+ezaai convert -i proteins.faa -s prot -o db/name.db -l name
+ezaai calculate -i db/ -j db/ -o aai_results.tsv -t 8
+```
+
 Based on the ANI and dDDH values, does the genome represent a previously described species or a potentially novel species?
-Does the genome represent a novel strain?
+Does the genome represent a new strain?

@@ -44,5 +44,27 @@ done < files_list.txt
 ```
 check file `macsyfinder/genome_1/best_solution_summary.tsv`
 
+## Antismash (Secondary metabolites)
+If you're interested on the secondary metabolites your strain produces (such as antibiotics or other bioactive molecules)
+* Go to https://antismash.secondarymetabolites.org/#!/start
+* Upload genomes one at a time
+
+## Alternative: antiSMASH command-line version
+```bash
+antismash genome.fasta \
+  --taxon bacteria \
+  --genefinding-tool prodigal \
+  --output-dir antismash_out/genome \
+  --cpus 8
+```
+Running antiSMASH on multiple genomes
+```bash
+for genome in *.fasta; do antismash "$genome" --taxon bacteria --genefinding-tool prodigal --output-dir antismash_out/"${genome%.fasta}" --cpus 8; done
+```
+or
+```bash
+for genomes in genomes/*.fasta; do name=$(basename "$genomes" .fasta); antismash "$genomes" --taxon bacteria --genefinding-tool prodigal --output-dir antismash_out/"$name" --cpus 8; done
+```
+
 ## Ecological inference
 Can your isolate be found in other environments? Which environments? (https://branchwater.sourmash.bio/)
