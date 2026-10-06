@@ -49,7 +49,7 @@ If you're interested on the secondary metabolites your strain produces (such as 
 * Go to https://antismash.secondarymetabolites.org/#!/start
 * Upload genomes one at a time
 
-## Alternative: antiSMASH command-line version
+## Alternative: antiSMASH command-line version :muscle:
 ```bash
 antismash genome.fasta \
   --taxon bacteria \
