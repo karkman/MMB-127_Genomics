@@ -18,7 +18,7 @@ To determine the taxonomic position of the genome. We will compare it with refer
 
 ![](../images/excel_ANI.png).
 
-### For the brave ones who want to use the terminal :muscle:
+### Alternative ANI command-line version
 ```bash
 java -jar OAU.jar -u path/to/usearch -fd path/to/genomes/ -n 8 -fmt matrix -o ani_matrix.txt
 ```
