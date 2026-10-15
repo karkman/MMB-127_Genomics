@@ -1,24 +1,24 @@
 # Day 3: Genome assembly
 
-## Connecting to Puhti
+## Connecting to Roihu
 
-See the instructions [here](01-UNIX-and-CSC.md#connecting-to-puhti).
+See the instructions [here](01-UNIX-and-CSC.md#connecting-to-roihu).
 
 ## Navigating to the  right folder
 
 First things first.  
 When you connect to Puhti, you will be in your home folder. You have all your course data in your own folder under the course projects `/scratch` folder. So by using commands like `csc-workspaces`, `cd`, `ls` and `pwd` make sure you are in the right folder before you start working.  
-In Visual Studio Code you can use the `Explorer` tab to open the right folder. Again remember to add your actual username in place of `$USER` and the project in place of `$PROJECT`.
+Again remember to add your actual username in place of `$USER` and the project in place of `$PROJECT`.
 
 ```bash
-/scratch/$PROJECT/$USER/MMB-114_Genomics
+/scratch/$PROJECT/$USER/MMB-127_Genomics
 ```
 
 When your ready and can see your own course folder, you can move on.  
 To make things easier, we can assign the project number to an environmental variable. Otherwise you need to replace each `$PROJECT` in the commands.  
 
 ```bash
-PROJECT="project_2015844"
+PROJECT="project_XXXXXX"
 echo $PROJECT
 ```
 

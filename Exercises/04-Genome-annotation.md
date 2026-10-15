@@ -1,17 +1,17 @@
 # Day 5: Genome annotation
 
-## Connecting to Puhti
+## Connecting to Roihu
 
-See the instructions [here](01-UNIX-and-CSC.md#connecting-to-puhti).
+See the instructions [here](01-UNIX-and-CSC.md#connecting-to-roihu).
 
 ## Navigating to the  right folder
 
 First things first.  
 When you connect to Puhti, you will be in your home folder. You have all your course data in your own folder under the course projects `/scratch` folder. So by using commands like `csc-workspaces`, `cd`, `ls` and `pwd` make sure you are in the right folder before you start working.  
-In Visual Studio Code you can use the `Explorer` tab to open the right folder. Again remember to add your actual username in place of `$USER`.
+Again remember to add your actual username in place of `$USER`.
 
 ```bash
-/scratch/$PROJECT/$USER/MMB-114_Genomics
+/scratch/$PROJECT/$USER/MMB-127_Genomics
 ```
 
 When your ready and can see your own course folder, you can move on.  
@@ -74,15 +74,20 @@ The completeness of a genome can be estimated using [CheckM2](https://github.com
 So first go to the right folder and allocate resources from a computing node.  
 
 ```bash
-cd /scratch/$PROJECT/$USER/MMB-114_Genomics
+cd /scratch/$PROJECT/$USER/MMB-127_Genomics
 sinteractive -A $PROJECT -m 100G --tmp 200 -c 4
+```
+
+Set an environmental variable pointing to the CheckM2 database. Make sure you have asseigned the correct project number to the `$PROJECT` variable.    
+
+```bash
+export CHECKM2_DB="/projappl/$PROJECT/Databases/checkm2/uniref100.KO.1.dmnd"
 ```
 
 Then run CheckM2 on your own genome.  
 
 ```bash
 /projappl/$PROJECT/tax_tools/bin/checkm2 predict \
-      --database_path /projappl/project_2015844/Databases/checkm2/uniref100.KO.1.dmnd
       --output-directory CheckM2_out \
       --lowmem \
       --threads $SLURM_CPUS_PER_TASK \
@@ -131,13 +136,13 @@ To annotate resistance or virulence genes we can use [abricate](https://github.c
 You can check which databases are available with:
 
 ```bash
-/projappl/project_2015844/abricate/bin/abricate --list
+/projappl/$PROJECT/abricate/bin/abricate --list
 ```
 
 And check how abricate works with:
 
 ```bash
-/projappl/project_2015844/abricate/bin/abricate --help
+/projappl/$PROJECT/abricate/bin/abricate --help
 ```
 
-If you want to use the bacmet database, specify database directory with `--datadir /projappl/project_2015844/Databases/` and the database name with `--db bacmet`.
+If you want to use the bacmet database, specify database directory with `--datadir /projappl/$PROJECT/Databases/` and the database name with `--db bacmet`.

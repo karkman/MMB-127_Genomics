@@ -4,7 +4,7 @@
 
 If you not experienced with UNIX and command line, the easiest way is to use the Roihu web interface, [www.roihu.csc.fi](www.roihu.csc.fi). You can log in with Haka or CSC crecentials.  
 
-If you wish to use your own computer, you can connect to Roihu using SSH.  
+If you wish to use your own computer, you can connect to Roihu using SSH. For that follow the instructions below.  
 
 ### SSH key
 
