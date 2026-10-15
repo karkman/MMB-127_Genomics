@@ -1,36 +1,27 @@
 # Day 1: UNIX and CSC
 
-## Connecting to Puhti
+## Connecting to Roihu
+
+If you not experienced with UNIX and command line, the easiest way is to use the Roihu web interface, [www.roihu.csc.fi](www.roihu.csc.fi). You can log in with Haka or CSC crecentials.  
+
+If you wish to use your own computer, you can connect to Roihu using SSH.  
 
 ### SSH key
 
 You need to set up SSH key before you can connect to CSC from your local machine using SSH.  
 If you're not sure whether you have done it, you can check it from [my.csc.fi](my.csc.fi) under your profile and SSH public keys.  
 
-In case you haven't set up SSH key, follow the instructions at [CSC webpages](https://docs.csc.fi/computing/connecting/ssh-keys/).  
+In case you haven't set up SSH key, follow the instructions at [CSC](https://docs.csc.fi/support/tutorials/roihu/#ssh-client).  
+
+### SSH certificate
+
+In addition to the SSH key, you need a SSH certificate that is valid for 24 h. You can follow the instruction at CSC [Roihu tutorial.](https://docs.csc.fi/support/tutorials/roihu/)  
 
 ### SSH connection
 
-* Launch Visual Studio Code
-* _Only on the first time:_ 
-    - _Open `Extensions` (one of the icons on the left) and install `Remote - SSH`_  
-* Down left corner you will have a (green) button with "><" (hoover over it and it says "Open a Remote Window"), click it 
-* Choose "Connect Current Window to Host..."
-* Type in the **user<span>@puhti.csc.fi** and hit "Enter" (change "user" for your own CSC username) 
-* Type your password and hit "Enter"
-* In the following dialogue, type **yes** and hit "Enter"
-
-When the down left corner says `SSH:puhti.csc.fi`, you're connected.
-* From the menu select `Terminal > New Terminal` and you should see a new panel. This is the __command line__.
-
-* When you need to logout just type **exit** in the terminal/command line and hit "Enter"  
-(or you can click the down left corner and choose "Close Remote Connection")
-
-### Don not want to use VS Code (MacOS [or Linux or WSL] users)
-
 * Launch Terminal
 (e.g. open the Launchpad and type **terminal**)
-* Type **ssh user<span>@puhti.csc.fi** and hit "Enter" (change "user" for your own CSC username)
+* Type **ssh USER<span>@roihu-cpu.csc.fi** and hit "Enter" (change "user" for your own CSC username)
 * In the following dialogue, type **yes** and hit "Enter"
 * Type your password and hit "Enter"
 * To logout first type **exit**, hit "Enter", and close the Terminal window
@@ -44,8 +35,8 @@ We start with some very basic UNIX exercises to get familiar with the command li
 Things inside a box like this...
 
 ```bash
-mkdir MMB114
-cd MMB114
+mkdir MMB127
+cd MMB127
 ```
 ...represent commands you need to type in the shell. Each line is a command. Commands have to be typed in a single line, one at a time. After each command, hit “Enter” to execute it.
 
@@ -83,7 +74,7 @@ ls
 Let's now create a new folder called "MMB114". In addition to the command (**mkdir**), we are now passing a term (also known as an argument) which, in this case, is the name of the folder we want to create:
 
 ```bash
-mkdir MMB114
+mkdir MMB127
 ```
 
 Has anything changed? How to list the contents of the folder again?
@@ -102,7 +93,7 @@ HINT (CLICK TO EXPAND)
 And now let's enter the "MMB114" folder:
 
 ```bash
-cd MMB114
+cd MMB127
 ```
 
 Did it work? Where are we now?
