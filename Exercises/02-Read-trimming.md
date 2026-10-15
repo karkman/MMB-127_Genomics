@@ -1,8 +1,8 @@
 # Day 2: Read trimming
 
-## Connecting to Puhti
+## Connecting to Roihu
 
-See the instructions [here](01-UNIX-and-CSC.md#connecting-to-puhti).
+See the instructions [here](01-UNIX-and-CSC.md#connecting-to-roihu).
 
 ## Setting up the the course workspace
 
@@ -21,7 +21,7 @@ To find the path to this folder we can first list all available projects with `c
 csc-workspaces
 ```
 
-Then look for the `/scratch` folder under the project `MMB-114_Genomics` and move there with `cd`.  
+Then look for the `/scratch` folder under the project `MMB-127` and move there with `cd`.  
 
 After that check once more where you are with `pwd`.  
 If you are in the right folder, make a subfolder for yourself. Name it with your username (`$USER`).
@@ -34,14 +34,14 @@ Then move to your own folder with `cd` and clone the course github repository in
 
 ```bash
 cd $USER
-git clone https://github.com/karkman/MMB-114_Genomics.git
+git clone https://github.com/karkman/MMB-127_Genomics.git
 ```
 
 Now you should have your own copy of the repository in Puhti.  
 Next we make a folder for the raw sequencing data.  
 
 ```bash
-cd MMB-114_Genomics
+cd MMB-127_Genomics
 mkdir data
 ```
 
@@ -53,7 +53,7 @@ When you are in your home folder, open the `Explorer`tab on the left and click `
 Paste this path, but change `$PROJECT` to the project code and `$USER` to your actual username.  
 
 ```bash
-/scratch/$PROJECT/$USER/MMB-114_Genomics
+/scratch/$PROJECT/$USER/MMB-127_Genomics
 ```
 
 Now you should see the files and folders on the left.  
@@ -137,7 +137,7 @@ echo $PROJECT
 ```
 
 Generate graphs for visualizing read quality and length distribution
-Make sure that your in the course folder (`/scratch/$PROJECT/$USER/MMB-114_Genomics`) before you run the command.  
+Make sure that your in the course folder (`/scratch/$PROJECT/$USER/MMB-127_Genomics`) before you run the command.  
 
 ```bash
 /projappl/$PROJECT/nano_tools/bin/NanoPlot \
@@ -245,8 +245,8 @@ And now we run CUTADAPT. But first, take a moment to familiarize yourself the to
 ```bash
 cutadapt -a CTGTCTCTTATACACATCT
          -A CTGTCTCTTATACACATCT
-         -o trimmed_illumina/MMB-114_trimmed_1.fastq.gz
-         -p trimmed_illumina/MMB-114_trimmed_2.fastq.gz
+         -o trimmed_illumina/MMB-127_trimmed_1.fastq.gz
+         -p trimmed_illumina/MMB-127_trimmed_2.fastq.gz
          -m 50
          # R1_reads here
          # R2_reads here
@@ -268,8 +268,8 @@ Now that we understand well what we are doing, let's run CUTADAPT. Pay attention
 ```bash
 cutadapt -a CTGTCTCTTATACACATCT \
          -A CTGTCTCTTATACACATCT \
-         -o trimmed_illumina/MMB-114_trimmed_1.fastq.gz \
-         -p trimmed_illumina/MMB-114_trimmed_2.fastq.gz \
+         -o trimmed_illumina/MMB-127_trimmed_1.fastq.gz \
+         -p trimmed_illumina/MMB-127_trimmed_2.fastq.gz \
          -m 50 \
          # R1_reads \
          # R2_reads \
@@ -295,8 +295,8 @@ module load biokit
 And then run FASTQC on the trimmed sequence data.
 
 ```bash
-fastqc trimmed_illumina/MMB-114_trimmed_1.fastq.gz 
-fastqc trimmed_illumina/MMB-114_trimmed_2.fastq.gz
+fastqc trimmed_illumina/MMB-127_trimmed_1.fastq.gz 
+fastqc trimmed_illumina/MMB-127_trimmed_2.fastq.gz
 ```
 
 After both tasks are completed, we exit the interactive partition:
