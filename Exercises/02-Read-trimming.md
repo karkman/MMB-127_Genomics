@@ -125,7 +125,7 @@ It might take a couple of seconds to minutes until the needed resources become a
 ### Nanopore QC
 
 ```bash
-sinteractive -A $PROJECT -m 20000
+sinteractive --account $PROJECT --cores 6
 ```
 
 Now you're connected to a computing node in Puhti. The environmental variables are not inherited from the login node, so you should set the env variable for the project again.  
@@ -140,7 +140,7 @@ Generate graphs for visualizing read quality and length distribution
 Make sure that your in the course folder (`/scratch/$PROJECT/$USER/MMB-127_Genomics`) before you run the command.  
 
 ```bash
-/projappl/$PROJECT/nano_tools/bin/NanoPlot \
+/projappl/$PROJECT/qc_assembly_tykky/bin/NanoPlot \
   -o nanoplot_out -f png --fastq path-to/your_raw_nanopore_reads.fastq
 ```
 
@@ -155,7 +155,7 @@ Transfer the nanoplot output folder to your computer and open the report `NanoPl
 Run the other QC program on your reads.  
 
 ```bash
-/projappl/$PROJECT/nano_tools/bin/nanoQC -o nanoQC_out path-to/your_raw_nanopore_reads.fastq
+/projappl/$PROJECT/qc_assembly_tykky/bin/nanoQC -o nanoQC_out path-to/your_raw_nanopore_reads.fastq
 ```
 
 Copy the resulting `nanoQC.html` file inside the ouput folder of nanoQC to your local computer and open it.  
@@ -173,14 +173,14 @@ The following command will trim the first 30 bases and the last 20 bases of each
 mkdir trimmed_nanopore
 
 cat path-to/your_raw_nanopore_reads.fastq |\
-  /projappl/$PROJECT/nano_tools/bin/chopper -q 12 -l 1000 --headcrop 30 --tailcrop 20 |\
+  /projappl/$PROJECT/qc_assembly_tykky/bin/chopper -q 12 -l 1000 --headcrop 30 --tailcrop 20 |\
   gzip > trimmed_nanopore/nanopore.trimmed.fastq.gz
 ```
 
 ### Optional - Visualizing the trimmed data
 
 ```bash
-/projappl/$PROJECT/nano_tools/bin/NanoPlot -o nanoplot_trimmed -f png --fastq trimmed_nanopore/nanopore.trimmed.fastq.gz
+/projappl/$PROJECT/qc_assembly_tykky/bin/NanoPlot -o nanoplot_trimmed -f png --fastq trimmed_nanopore/nanopore.trimmed.fastq.gz
 ```
 
 If everything looks ok, the sequence data is ready for assembly.  
@@ -191,13 +191,13 @@ We will assemble the genome on the next exercise session.
 Now we will run a program called FASTQC for quality assessment of the raw genome data. The tasks we are performing from now on require more memory than simple bash commands. Running them on the login node would make the system slow, and if a task takes more than 30 minutes to complete, it is killed automatically. Instead, we have to connect to another node, called the interactive partition:
 
 ```bash
-sinteractive -A $PROJECT
+sinteractive --account $PROJECT
 ```
 
-The next step is to load the **biokit** module, which is a module in CSC containing several programs widely used in bioinformatics:
+The next step is to load the **bio-apps** and **fastqc** module:
 
 ```bash
-module load biokit
+module load bio-apps
 ```
 
 And now we run FASTQC, once for each FASTQ file:
@@ -231,7 +231,7 @@ First, let's connect to the interactive partition and load the **cutadapt** modu
 
 ```bash
 module purge
-module load cutadapt/3.5
+module load cutadapt/5.1.0
 ```
 
 Then make folder for trimmed data.  
@@ -289,7 +289,8 @@ But first we need to unload the cutadapt module (`module purge`) and reload biok
 
 ```bash
 module purge
-module load biokit
+module load bio-apps
+module load fastqc
 ```
 
 And then run FASTQC on the trimmed sequence data.
