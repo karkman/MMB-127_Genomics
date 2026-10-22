@@ -8,11 +8,6 @@ See the instructions [here](01-UNIX-and-CSC.md#connecting-to-roihu).
 
 First things first.  
 When you connect to Puhti, you will be in your home folder. You have all your course data in your own folder under the course projects `/scratch` folder. So by using commands like `csc-workspaces`, `cd`, `ls` and `pwd` make sure you are in the right folder before you start working.  
-Again remember to add your actual username in place of `$USER`.
-
-```bash
-/scratch/$PROJECT/$USER/MMB-127_Genomics
-```
 
 When your ready and can see your own course folder, you can move on.  
 
@@ -42,7 +37,6 @@ Then run the annotation with the following command. Make sure to fill in the str
 ```bash
 bakta \
       flye_out/assembly.fasta \
-      --db /scratch/project_2015844/bakta/db/ \
       --prefix # our strain name \
       --genus # type here \
       --locus # your strain name \
@@ -84,19 +78,20 @@ So first go to the right folder and allocate resources from a computing node.
 
 ```bash
 cd /scratch/$PROJECT/$USER/MMB-127_Genomics
-sinteractive -A $PROJECT -m 100G --tmp 200 -c 4
+sinteractive --account $PROJECT --cores 12
 ```
 
-Set an environmental variable pointing to the CheckM2 database. Make sure you have asseigned the correct project number to the `$PROJECT` variable.    
+Set an environmental variable pointing to the CheckM2 database. Make sure you have asseigned the correct project number to the `$PROJECT` variable.  
 
 ```bash
-export CHECKM2_DB="/projappl/$PROJECT/Databases/checkm2/uniref100.KO.1.dmnd"
+module load bio-apps
+module load checkm2
 ```
 
 Then run CheckM2 on your own genome.  
 
 ```bash
-/projappl/$PROJECT/tax_tools/bin/checkm2 predict \
+checkm2 predict \
       --output-directory CheckM2_out \
       --lowmem \
       --threads $SLURM_CPUS_PER_TASK \
@@ -111,16 +106,17 @@ Open the output folder of CheckM2 and find a file called `quality_report.tsv`.
 
 The taxonomic annotation of genomes can be done with [GTDB-Tk](https://ecogenomics.github.io/GTDBTk/index.html) against the Genome Taxonomy Database ([GTDB](https://gtdb.ecogenomic.org/)).  
 
-GTDB-Tk has its own database that has been downloaded to our course scratch folder (`/scratch/$PROJECT/GTDB/`) due to its large size. We need to set an environmental variable pointing to the database.  
+GTDB-Tk and its database are available in Roihu, so we can just load the module.  
 
 ```bash
-export GTDBTK_DATA_PATH="/scratch/$PROJECT/GTDB/release232"
+module load bio-apps
+module load py-gtdbtk
 ```
 
 Then we can run the taxonomic annotation with GTDB-Tk.  
 
 ```bash
-/projappl/$PROJECT/tax_tools/bin/gtdbtk classify_wf \
+gtdbtk classify_wf \
       --out_dir GTDBTK_out \
       --extension .fasta \
       --scratch_dir $TMPDIR \
