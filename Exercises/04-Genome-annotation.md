@@ -23,15 +23,24 @@ First we will annotate our genome using a program called [Bakta](https://github.
 Let's start by connecting to the interactive partition. Now we will need a little bit more memory than what we get as default, so we need to specify that (and let's also ask for some more CPUs):
 
 ```bash
-sinteractive -A $PROJECT -m 20000 -c 4
+sinteractive --account $PROJECT --cores 4
 ```
 
-Bakta is not found from Puhti, but it has been installed into the project applications folder (as many other tools used so far).  
 It also needs its own database files and that they can be found from the `Databases` folder.  
 We can also add some additional data about the strain to guide the annotation. So before running the annotation, we need to fill in some data or leave some options out.  
 
+First load bakta module.  
+
 ```bash
-/projappl/$PROJECT/bakta/bin/bakta \
+module load bio-apps
+module load py-bakta
+```
+
+Then have a look a thhe bakta options with `bakta --help`.  
+Then run the annotation with the following command. Make sure to fill in the strain name, genus and locus tag.
+
+```bash
+bakta \
       flye_out/assembly.fasta \
       --db /scratch/project_2015844/bakta/db/ \
       --prefix # our strain name \
@@ -41,7 +50,7 @@ We can also add some additional data about the strain to guide the annotation. S
       --output bakta
 ```
 
-Take a look inside the output folder using `ls`. Or the `Explorer`. To understand what are these files that Bakta has created, take a look [here](https://github.com/oschwengers/bakta#output).
+Take a look inside the output folder using `ls`. To understand what are these files that Bakta has created, take a look [here](https://github.com/oschwengers/bakta#output).
 
 Now take a look at the file ending in `.txt` file using `less`. How many protein-coding genes (a.k.a coding sequences, CDSs) were found? And how many rRNA genes/fragments?  
 Then open the file ending in `.tsv`. Look for the 16S rRNA gene from the annotations. Can you locate it from the assembly? We will need this information later today.  

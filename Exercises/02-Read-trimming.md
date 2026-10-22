@@ -37,7 +37,7 @@ cd $USER
 git clone https://github.com/karkman/MMB-127_Genomics.git
 ```
 
-Now you should have your own copy of the repository in Puhti.  
+Now you should have your own copy of the repository in Roihu.  
 Next we make a folder for the raw sequencing data.  
 
 ```bash
@@ -46,18 +46,7 @@ mkdir data
 ```
 
 If you feel lost, don't worry. Breathe, relax, think and check once more with `pwd`.  
-You can always get to your home folder with typing only `cd` and pressing enter.  
-
-Actually everyone can do that and we'll open the whole course folder to the `Explorer` tab in VS Code.  
-When you are in your home folder, open the `Explorer`tab on the left and click `Open Folder`.  
-Paste this path, but change `$PROJECT` to the project code and `$USER` to your actual username.  
-
-```bash
-/scratch/$PROJECT/$USER/MMB-127_Genomics
-```
-
-Now you should see the files and folders on the left.  
-When your ready and can see your own course folder, you can move on.  
+You can always get to your home folder with typing only `cd` and pressing enter. And you can find the path to the course scratch with `csc-workspaces`.   
 
 To make things easier, we can assign the project number to an environmental variable. Otherwise you need to replace each `$PROJECT` in the commands.  
 
@@ -136,12 +125,17 @@ PROJECT="project_XXXXXXXX"
 echo $PROJECT
 ```
 
+The programs for the next steps are installed in the projappl folder of the course project. You can add this folder to your PATH environmental variable, so you don't have to type the whole path every time you want to run a program.  
+
+```bash
+export PATH="/projappl/project_2020859/qc_assembly_tykky/bin:$PATH"
+```
+
 Generate graphs for visualizing read quality and length distribution
 Make sure that your in the course folder (`/scratch/$PROJECT/$USER/MMB-127_Genomics`) before you run the command.  
 
 ```bash
-/projappl/$PROJECT/qc_assembly_tykky/bin/NanoPlot \
-  -o nanoplot_out -f png --fastq path-to/your_raw_nanopore_reads.fastq
+NanoPlot -o nanoplot_out -f png --fastq path-to/your_raw_nanopore_reads.fastq
 ```
 
 Transfer the nanoplot output folder to your computer and open the report `NanoPlot-report.html`
@@ -155,7 +149,7 @@ Transfer the nanoplot output folder to your computer and open the report `NanoPl
 Run the other QC program on your reads.  
 
 ```bash
-/projappl/$PROJECT/qc_assembly_tykky/bin/nanoQC -o nanoQC_out path-to/your_raw_nanopore_reads.fastq
+nanoQC -o nanoQC_out path-to/your_raw_nanopore_reads.fastq
 ```
 
 Copy the resulting `nanoQC.html` file inside the ouput folder of nanoQC to your local computer and open it.  
@@ -173,14 +167,14 @@ The following command will trim the first 30 bases and the last 20 bases of each
 mkdir trimmed_nanopore
 
 cat path-to/your_raw_nanopore_reads.fastq |\
-  /projappl/$PROJECT/qc_assembly_tykky/bin/chopper -q 12 -l 1000 --headcrop 30 --tailcrop 20 |\
+  chopper -q 12 -l 1000 --headcrop 30 --tailcrop 20 |\
   gzip > trimmed_nanopore/nanopore.trimmed.fastq.gz
 ```
 
 ### Optional - Visualizing the trimmed data
 
 ```bash
-/projappl/$PROJECT/qc_assembly_tykky/bin/NanoPlot -o nanoplot_trimmed -f png --fastq trimmed_nanopore/nanopore.trimmed.fastq.gz
+NanoPlot -o nanoplot_trimmed -f png --fastq trimmed_nanopore/nanopore.trimmed.fastq.gz
 ```
 
 If everything looks ok, the sequence data is ready for assembly.  

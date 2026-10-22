@@ -29,13 +29,18 @@ We will use [Flye](https://github.com/fenderglass/Flye) to assemble our nanopore
 Allocate a computing node.
 
 ```bash
-sinteractive -A $PROJECT -c 4
+sinteractive --account $PROJECT --cores 4
+```
+
+You can again add the course project bin folder to your PATH environmental variable, so you don't have to type the whole path every time you want to run a program.  
+
+```bash
+export PATH="/projappl/project_2020859/qc_assembly_tykky/bin:$PATH"
 ```
 
 Before running the command, have a look at the [Flye usage manual](https://github.com/fenderglass/Flye/blob/flye/docs/USAGE.md). Would you add any additional options to the run?
 
 ```bash
-export PATH="/projappl/project_2020859/qc_assembly_tykky/bin:$PATH"
 flye \
     --nano-raw # your trimmed reads here \
     --threads 6 \
@@ -47,23 +52,26 @@ flye \
 Now we will run a program called [QUAST](https://quast.sourceforge.net/quast) to evaluate the quality of the assembly. We start by connecting to the interactive partition and loading the QUAST module:
 
 ```bash
-# sinteractive -A $PROJECT
-export PATH="/projappl/project_2020859/qc_assembly_tykky/bin:$PATH"
+sinteractive -A $PROJECT
+```
+
+```bash
+module load quast/5.2.0
 ```
 
 First have a look at the different options you have with QUAST.
 
 ```bash
-quast.py --help
+quast --help
 ```
 
 And now let's run QUAST:
 
 ```bash
-quast.py flye_out/assembly.fasta -o QUAST_nanopore
+quast flye_out/assembly.fasta -o QUAST_nanopore
 ```
 
-When QUAST has finished, you can close the interactive session with `exit` and download the the QUAST output folder (`QUAST`). Right-click the files in the `Explorer` and click `Download...`.
+When QUAST has finished, you can close the interactive session with `exit` and download the the QUAST output folder (`QUAST`).  
 
 Open the file "report.html" in a web browser. How does the assemblies look like?
 
@@ -149,22 +157,22 @@ Now we will run [QUAST](https://quast.sourceforge.net/quast) on the spades assem
 
 ```bash
 sinteractive -A $PROJECT
-module load quast/5.2.0
+module load quast/5.3.0
 ```
 
-First have a look at the different options you have with QUAST.
+You can have remind yourself of the different options you have with QUAST.
 
 ```bash
-quast.py --help
+quast --help
 ```
 
 And now let's run QUAST:
 
 ```bash
-quast.py spades_out/contigs.fasta -o QUAST_spades
+quast spades_out/contigs.fasta -o QUAST_spades
 ```
 
-When QUAST has finished, you can close the interactive session with `exit` and download the following files from the QUAST output folder (`QUAST`). Right-click the files in the `Explorer` and click `Download...`.
+When QUAST has finished, you can close the interactive session with `exit` and download the following files from the QUAST output folder (`QUAST`).  
 
 * report.html
 * report.pdf
