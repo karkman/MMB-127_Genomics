@@ -29,13 +29,14 @@ We will use [Flye](https://github.com/fenderglass/Flye) to assemble our nanopore
 Allocate a computing node.
 
 ```bash
-sinteractive -A $PROJECT -m 40000 --cores 6
+sinteractive -A $PROJECT -c 4
 ```
 
 Before running the command, have a look at the [Flye usage manual](https://github.com/fenderglass/Flye/blob/flye/docs/USAGE.md). Would you add any additional options to the run?
 
 ```bash
-/projappl/$PROJECT/nano_assembly/bin/flye \
+export PATH="/projappl/project_2020859/qc_assembly_tykky/bin:$PATH"
+flye \
     --nano-raw # your trimmed reads here \
     --threads 6 \
     --out-dir flye_out
@@ -47,7 +48,7 @@ Now we will run a program called [QUAST](https://quast.sourceforge.net/quast) to
 
 ```bash
 # sinteractive -A $PROJECT
-module load quast/5.2.0
+export PATH="/projappl/project_2020859/qc_assembly_tykky/bin:$PATH"
 ```
 
 First have a look at the different options you have with QUAST.
@@ -95,7 +96,9 @@ If you would like to learn more about the options for SPAdes, you can load the s
 Remember to unload the module as well.  
 
 ```bash
-module load spades/3.15.5
+module load bio-apps/v202603
+module load spades/4.3.0
+
 spades.py --help
 module purge
 ```
@@ -191,7 +194,7 @@ The Singularity container can be found from The `Env` folder and the GTDB databa
 First we need to build a hash sketchs from our assembly. And we need an interactive session for that.  
 
 ```bash
-sinteractive -A $PROJECT -m 10000 
+sinteractive -A $PROJECT
 ```
 
 Then the signature.  
@@ -201,7 +204,7 @@ Then the signature.
     sketch dna \
     -p scaled=1000,k=31 \
     spades_out/contigs.fasta \
-    -o MMB114.sig
+    -o MMB127.sig
 ```
 
 When we have the signature, we can run a search against the database.  
@@ -209,7 +212,7 @@ When we have the signature, we can run a search against the database.
 ```bash
 /projappl/$PROJECT/sourmash/bin/sourmash \
     search \
-    MMB114.sig \
+    MMB127.sig \
     /projappl/$PROJECT/Databases/sourmash/gtdb-reps-rs220-k31.dna.zip \
     -n 20
 ```
@@ -222,7 +225,7 @@ You can also use another command `gather` in sourmash to look for more broadly m
 ```bash
 /projappl/$PROJECT/sourmash/bin/sourmash \
     gather \
-    MMB114.sig \
+    MMB127.sig \
     /projappl/$PROJECT/Databases/sourmash/gtdb-reps-rs220-k31.dna.zip \
     -n 20  \
     2> /dev/null
