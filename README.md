@@ -12,21 +12,21 @@ Bacterial genomics hands-on course at the University of Helsinki.
 
 ## Learning outcomes
 
-**After completing this module, you will be able to:**
+__After completing this module, you will be able to:__
 
-*	Select the most appropriate sequencing platform for a bacterial genome sequencing experiment, taking into account the research question, genome characteristics, expected data quality, read length, throughput, cost, and available resources.
-*	Assess and critically evaluate the quality of raw sequencing data using appropriate quality-control metrics and tools, and determine its suitability for downstream analysis.
-*	Use a range of bioinformatics tools and workflows to:
-    *	process and quality-control whole-genome sequencing data
-    *	assemble and structurally and functionally annotate bacterial genomes
-    *	predict metabolic pathways from assembled and annotated genomes
-    *	compare closely related bacterial genomes using appropriate comparative-genomics approaches.
-*	Analyse, interpret, and critically evaluate genomic results in relation to the research question, while recognising relevant sources of uncertainty and methodological limitations.
-*	Communicate methods, results, and conclusions in a clear scientific report that follows the conventions of scientific writing and includes appropriate figures, tables, citations, and reproducible methodological information.
+* Select the most appropriate sequencing platform for a bacterial genome sequencing experiment, taking into account the research question, genome characteristics, expected data quality, read length, throughput, cost, and available resources.
+* Assess and critically evaluate the quality of raw sequencing data using appropriate quality-control metrics and tools, and determine its suitability for downstream analysis.
+* Use a range of bioinformatics tools and workflows to:
+  * process and quality-control whole-genome sequencing data
+  * assemble and structurally and functionally annotate bacterial genomes
+  * predict metabolic pathways from assembled and annotated genomes
+  * compare closely related bacterial genomes using appropriate comparative-genomics approaches.
+* Analyse, interpret, and critically evaluate genomic results in relation to the research question, while recognising relevant sources of uncertainty and methodological limitations.
+* Communicate methods, results, and conclusions in a clear scientific report that follows the conventions of scientific writing and includes appropriate figures, tables, citations, and reproducible methodological information.
 
 ## General instructions
 
-* [Software Installations](Exercises/00-software-installations.md)
+[Software Installations](Exercises/00-software-installations.md)
 
 ## Course content
 
