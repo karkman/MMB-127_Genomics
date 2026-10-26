@@ -28,13 +28,13 @@ We are going to call the program first
 ```bash
 export PATH="/projappl/project_2020859/pangenome_tykky/bin:$PATH"
 ```
-Secondly, we will create databases for each protein annotation
+Secondly, we create databases for each protein annotation
 ```bash
 ezaai convert -i proteins_1.faa -s prot -o db/proteins_1.db
 ezaai convert -i proteins_2.faa -s prot -o db/proteins_2.db
 ezaai convert -i proteins_3.faa -s prot -o db/proteins_3.db
 ```
-Finally, we will run ezaai
+Finally, we run ezaai
 ```bash
 ezaai calculate -i db/ -j db/ -o aai_results.tsv -t 8
 ```
