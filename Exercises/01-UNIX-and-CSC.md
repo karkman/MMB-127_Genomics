@@ -252,4 +252,4 @@ Let's list the contents of the folder. What happened to "myfolder"?
 Try taking some online tutorials, e.g.:
 
 * https://www.learnenough.com/command-line-tutorial
-* https://www.codecademy.com/learn/learn-the-command-line
+* ~https://www.codecademy.com/learn/learn-the-command-line~ (not free anymore)
