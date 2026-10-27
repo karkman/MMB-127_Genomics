@@ -44,4 +44,9 @@ GTDBTK +db
 spades.py
 
 
+`module load bio-apps`
+`module load py-bakta`
+bakta
+
+
 `export PATH="/projappl/project_2020859/pangenome_tykky/bin:$PATH"`
