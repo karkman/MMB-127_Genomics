@@ -39,4 +39,9 @@ echo $GTDBTK_DATA_PATH
 GTDBTK +db
 
 
+`module load bio-apps/v202603`
+`module load spades/4.3.0`
+spades.py
+
+
 `export PATH="/projappl/project_2020859/pangenome_tykky/bin:$PATH"`

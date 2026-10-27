@@ -157,7 +157,7 @@ Now we will run [QUAST](https://quast.sourceforge.net/quast) on the spades assem
 
 ```bash
 sinteractive -A $PROJECT
-module load quast/5.3.0
+export PATH="/projappl/project_2020859/quast_tykky/bin:$PATH"
 ```
 
 You can have remind yourself of the different options you have with QUAST.
