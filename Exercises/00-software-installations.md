@@ -48,5 +48,11 @@ spades.py
 `module load py-bakta`
 bakta
 
+`module load bio-apps`
+`module load checkm2`
+checkm2
+
+
 
 `export PATH="/projappl/project_2020859/pangenome_tykky/bin:$PATH"`
+
