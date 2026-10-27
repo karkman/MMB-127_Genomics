@@ -65,6 +65,12 @@ If you're interested on the secondary metabolites your strain produces (such as 
 
 ## Alternative: antiSMASH command-line version :muscle:
 ```bash
+module load bio-apps/v202603
+module load antismash/8.0.4
+```
+
+
+```bash
 antismash bakta.gbff \
   --taxon bacteria \
   --databases /scratch/$PROJECT//DATABASES/antismash_db
