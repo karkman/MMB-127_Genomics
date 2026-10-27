@@ -53,6 +53,10 @@ bakta
 checkm2
 
 
+`module load bio-apps`
+`module load py-gtdbtk`
+gtdbtk
+
 
 `export PATH="/projappl/project_2020859/pangenome_tykky/bin:$PATH"`
 
