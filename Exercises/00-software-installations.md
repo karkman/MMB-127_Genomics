@@ -60,3 +60,11 @@ gtdbtk
 
 `export PATH="/projappl/project_2020859/pangenome_tykky/bin:$PATH"`
 abricate
+
+/projappl/project_2020859/OAU.jar
+ANI
+
+
+`export PATH="/projappl/$PROJECT/ezaai_tykky/bin:$PATH"`
+ezaai
+

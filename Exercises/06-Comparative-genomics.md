@@ -20,13 +20,13 @@ To determine the taxonomic position of the genome. We will compare it with refer
 
 ### Alternative ANI command-line version
 ```bash
-java -jar /projappl/project_2020859/OAU.jar -u /projappl/project_2020859/usearch11 -fd path/to/genomes/ -n 8 -fmt matrix -o ani_matrix.txt
+java -jar /projappl/$PROJECT/OAU.jar -u /projappl/$PROJECT/usearch11 -fd path/to/genomes/ -n 8 -fmt matrix -o ani_matrix.txt
 ```
 ## Average amino acid identity
 We are going to call the program first
 
 ```bash
-export PATH="/projappl/project_2020859/pangenome_tykky/bin:$PATH"
+export PATH="/projappl/$PROJECT/ezaai_tykky/bin:$PATH"
 ```
 Secondly, we create databases for each protein annotation
 ```bash
