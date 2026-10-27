@@ -16,3 +16,27 @@ Follow the instructions and install OpenSSH if you do not have it already
 
 __Please let me know if you would like to use a laptop from the university.__  
 We have Linux laptops that can be borrowed.
+
+
+## List of tools
+
+`export PATH="/projappl/$PROJECT/qc_assembly_tykky/bin:$PATH"`
+NANOPLOT/NANOQC
+CHOPPER
+FLYE
+QUAST
+
+`module load cutadapt/5.1.0`
+cutadapt
+
+`export PATH="/projappl/$PROJECT/quast_tykky/bin:$PATH"`
+quast
+
+
+`module load bio-apps/v202603`
+`module load py-gtdbtk/2.7.2`
+echo $GTDBTK_DATA_PATH
+GTDBTK +db
+
+
+`export PATH="/projappl/project_2020859/pangenome_tykky/bin:$PATH"`

@@ -56,7 +56,7 @@ sinteractive -A $PROJECT
 ```
 
 ```bash
-module load quast/5.2.0
+export PATH="/projappl/project_2020859/quast_tykky/bin:$PATH"
 ```
 
 First have a look at the different options you have with QUAST.
