@@ -72,6 +72,6 @@ ezaai
 macsyfinder
 
 
-module load bio-apps/v202603
-module load antismash/8.0.4
+`module load bio-apps`
+`module load antismash/8.0.4`
 antismash
