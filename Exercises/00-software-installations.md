@@ -59,4 +59,4 @@ gtdbtk
 
 
 `export PATH="/projappl/project_2020859/pangenome_tykky/bin:$PATH"`
-
+abricate
