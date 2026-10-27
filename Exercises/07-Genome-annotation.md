@@ -61,7 +61,7 @@ check file `macsyfinder/genome_1/best_solution_summary.tsv`
 ## Antismash (Secondary metabolites)
 If you're interested on the secondary metabolites your strain produces (such as antibiotics or other bioactive molecules)
 * Go to https://antismash.secondarymetabolites.org/#!/start
-* Upload genomes one at a time
+* Upload bakta.gbff one at a time
 
 ## Alternative: antiSMASH command-line version :muscle:
 ```bash
