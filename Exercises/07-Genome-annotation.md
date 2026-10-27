@@ -31,6 +31,10 @@ Determine Bacterial scretion systems in your bacteria (https://github.com/gem-pa
 ![](../images/secretion_systems.png)
 
 ```bash
+export PATH="/projappl/$PROJECT/macsyfinder/bin:$PATH"
+```
+
+```bash
 macsyfinder --db-type ordered_replicon \
   --sequence-db bakta_proteins.faa \
   --models-dir /scratch/$PROJECT/DATABASES/macsyfinder_models \

@@ -68,3 +68,5 @@ ANI
 `export PATH="/projappl/$PROJECT/ezaai_tykky/bin:$PATH"`
 ezaai
 
+`export PATH="/projappl/$PROJECT/macsyfinder/bin:$PATH"`
+macsyfinder
