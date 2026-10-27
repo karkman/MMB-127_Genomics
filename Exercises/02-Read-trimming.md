@@ -192,6 +192,7 @@ The next step is to load the **bio-apps** and **fastqc** module:
 
 ```bash
 module load bio-apps
+module load fastqc/0.12.1
 ```
 
 And now we run FASTQC, once for each FASTQ file:
