@@ -31,13 +31,23 @@ Determine Bacterial scretion systems in your bacteria (https://github.com/gem-pa
 ![](../images/secretion_systems.png)
 
 ```bash
+macsyfinder --db-type ordered_replicon \
+  --sequence-db bakta_proteins.faa \
+  --models-dir /scratch/$PROJECT/DATABASES/macsyfinder_models \
+  --models TXSScan all \
+  -o macsyfinder_out
+```
+
+For multiple genomes
+
+```bash
 mkdir -p macsyfinder
 ls proteins_fasta/*.faa > files_list.txt
 while IFS= read -r fasta; do
     sample=$(basename "$fasta" .faa)
     macsyfinder --db-type ordered_replicon \
   --sequence-db "$fasta" \
-  --models-dir /home/julibote/TXSScan_model \
+  --models-dir /scratch/$PROJECT/DATABASES/macsyfinder_models \
   --models TXSScan all \
   -o macsyfinder/"$sample"
 done < files_list.txt
