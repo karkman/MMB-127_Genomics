@@ -65,19 +65,20 @@ If you're interested on the secondary metabolites your strain produces (such as 
 
 ## Alternative: antiSMASH command-line version :muscle:
 ```bash
-antismash genome.fasta \
+antismash bakta.gbff \
   --taxon bacteria \
-  --genefinding-tool prodigal \
+  --databases /scratch/$PROJECT//DATABASES/antismash_db
   --output-dir antismash_out/genome \
   --cpus 8
+  --no-zip-output --cb-knownclusters --cb-subclusters --cc-mibig
 ```
 Running antiSMASH on multiple genomes
 ```bash
-for genome in *.fasta; do antismash "$genome" --taxon bacteria --genefinding-tool prodigal --output-dir antismash_out/"${genome%.fasta}" --cpus 8; done
+for bakta_gbff in *.gbff; do antismash "$bakta_gbff" --taxon bacteria --output-dir antismash_out/"${bakta_gbff%.gbff}" --cpus 8 --databases /scratch/$PROJECT//DATABASES/antismash_db --no-zip-output --cb-knownclusters --cb-subclusters --cc-mibig; done
 ```
 or
 ```bash
-for genomes in genomes/*.fasta; do name=$(basename "$genomes" .fasta); antismash "$genomes" --taxon bacteria --genefinding-tool prodigal --output-dir antismash_out/"$name" --cpus 8; done
+for bakta_gbff in bakta/*.gbff; do name=$(basename "$bakta_gbff" .gbff); antismash "$bakta_gbff" --taxon bacteria --output-dir antismash_out/"$bakta_gbff" --cpus 8 --databases /scratch/$PROJECT//DATABASES/antismash_db --no-zip-output --cb-knownclusters --cb-subclusters --cc-mibig; done
 ```
 
 ## Ecological inference
