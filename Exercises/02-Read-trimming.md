@@ -167,7 +167,7 @@ The following command will trim the first 30 bases and the last 20 bases of each
 mkdir trimmed_nanopore
 
 cat path-to/your_raw_nanopore_reads.fastq |\
-  chopper -q 12 -l 1000 --headcrop 30 --tailcrop 20 |\
+  chopper --trim-approach fixed-crop -q 12 -l 1000 --headcrop 30 --tailcrop 20 |\
   gzip > trimmed_nanopore/nanopore.trimmed.fastq.gz
 ```
 
