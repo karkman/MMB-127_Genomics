@@ -46,7 +46,7 @@ mkdir data
 ```
 
 If you feel lost, don't worry. Breathe, relax, think and check once more with `pwd`.  
-You can always get to your home folder with typing only `cd` and pressing enter. And you can find the path to the course scratch with `csc-workspaces`.   
+You can always get to your home folder with typing only `cd` and pressing enter. And you can find the path to the course scratch with `csc-workspaces`.  
 
 To make things easier, we can assign the project number to an environmental variable. Otherwise you need to replace each `$PROJECT` in the commands.  
 
