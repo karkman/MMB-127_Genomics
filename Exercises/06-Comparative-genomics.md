@@ -16,15 +16,26 @@ To determine the taxonomic position of the genome. We will compare it with refer
 * Copy the ANI value and paste it into an Excel file.
 * Repeat the same process with the other reference genomes.
 
-![](../images/excel_ANI.png).
+![](../images/excel_ANI.png)
 
 ### Alternative ANI command-line version
 ```bash
-java -jar OAU.jar -u path/to/usearch -fd path/to/genomes/ -n 8 -fmt matrix -o ani_matrix.txt
+java -jar /projappl/$PROJECT/OAU.jar -u /projappl/$PROJECT/usearch11 -fd path/to/genomes/ -n 8 -fmt matrix -o ani_matrix.txt
 ```
-## Average amino acid identity 
+## Average amino acid identity
+We are going to call the program first
+
 ```bash
-ezaai convert -i proteins.faa -s prot -o db/name.db -l name
+export PATH="/projappl/$PROJECT/ezaai_tykky/bin:$PATH"
+```
+Secondly, we create databases for each protein annotation
+```bash
+ezaai convert -i proteins_1.faa -s prot -o db/proteins_1.db
+ezaai convert -i proteins_2.faa -s prot -o db/proteins_2.db
+ezaai convert -i proteins_3.faa -s prot -o db/proteins_3.db
+```
+Finally, we run ezaai
+```bash
 ezaai calculate -i db/ -j db/ -o aai_results.tsv -t 8
 ```
 

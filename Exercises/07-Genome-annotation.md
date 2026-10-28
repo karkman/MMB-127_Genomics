@@ -31,13 +31,27 @@ Determine Bacterial scretion systems in your bacteria (https://github.com/gem-pa
 ![](../images/secretion_systems.png)
 
 ```bash
+export PATH="/projappl/$PROJECT/macsyfinder/bin:$PATH"
+```
+
+```bash
+macsyfinder --db-type ordered_replicon \
+  --sequence-db bakta_proteins.faa \
+  --models-dir /scratch/$PROJECT/DATABASES/macsyfinder_models \
+  --models TXSScan all \
+  -o macsyfinder_out
+```
+
+For multiple genomes
+
+```bash
 mkdir -p macsyfinder
 ls proteins_fasta/*.faa > files_list.txt
 while IFS= read -r fasta; do
     sample=$(basename "$fasta" .faa)
     macsyfinder --db-type ordered_replicon \
   --sequence-db "$fasta" \
-  --models-dir /home/julibote/TXSScan_model \
+  --models-dir /scratch/$PROJECT/DATABASES/macsyfinder_models \
   --models TXSScan all \
   -o macsyfinder/"$sample"
 done < files_list.txt
@@ -47,23 +61,30 @@ check file `macsyfinder/genome_1/best_solution_summary.tsv`
 ## Antismash (Secondary metabolites)
 If you're interested on the secondary metabolites your strain produces (such as antibiotics or other bioactive molecules)
 * Go to https://antismash.secondarymetabolites.org/#!/start
-* Upload genomes one at a time
+* Upload bakta.gbff one at a time
 
 ## Alternative: antiSMASH command-line version :muscle:
 ```bash
-antismash genome.fasta \
+module load bio-apps/v202603
+module load antismash/8.0.4
+```
+
+
+```bash
+antismash bakta.gbff \
   --taxon bacteria \
-  --genefinding-tool prodigal \
+  --databases /scratch/$PROJECT//DATABASES/antismash_db
   --output-dir antismash_out/genome \
   --cpus 8
+  --no-zip-output --cb-knownclusters --cb-subclusters --cc-mibig
 ```
 Running antiSMASH on multiple genomes
 ```bash
-for genome in *.fasta; do antismash "$genome" --taxon bacteria --genefinding-tool prodigal --output-dir antismash_out/"${genome%.fasta}" --cpus 8; done
+for bakta_gbff in *.gbff; do antismash "$bakta_gbff" --taxon bacteria --output-dir antismash_out/"${bakta_gbff%.gbff}" --cpus 8 --databases /scratch/$PROJECT//DATABASES/antismash_db --no-zip-output --cb-knownclusters --cb-subclusters --cc-mibig; done
 ```
 or
 ```bash
-for genomes in genomes/*.fasta; do name=$(basename "$genomes" .fasta); antismash "$genomes" --taxon bacteria --genefinding-tool prodigal --output-dir antismash_out/"$name" --cpus 8; done
+for bakta_gbff in bakta/*.gbff; do name=$(basename "$bakta_gbff" .gbff); antismash "$bakta_gbff" --taxon bacteria --output-dir antismash_out/"$bakta_gbff" --cpus 8 --databases /scratch/$PROJECT//DATABASES/antismash_db --no-zip-output --cb-knownclusters --cb-subclusters --cc-mibig; done
 ```
 
 ## Ecological inference

@@ -117,7 +117,7 @@ It might take a couple of seconds to minutes until the needed resources become a
 sinteractive --account $PROJECT --cores 6
 ```
 
-Now you're connected to a computing node in Puhti. The environmental variables are not inherited from the login node, so you should set the env variable for the project again.  
+Now you're connected to a computing node in Roihu. The environmental variables are not inherited from the login node, so you should set the env variable for the project again.  
 Or you can just type the project on each occassion where there is `$PROJECT` in the examples.  
 
 ```bash
@@ -167,7 +167,7 @@ The following command will trim the first 30 bases and the last 20 bases of each
 mkdir trimmed_nanopore
 
 cat path-to/your_raw_nanopore_reads.fastq |\
-  chopper -q 12 -l 1000 --headcrop 30 --tailcrop 20 |\
+  chopper --trim-approach fixed-crop -q 12 -l 1000 --headcrop 30 --tailcrop 20 |\
   gzip > trimmed_nanopore/nanopore.trimmed.fastq.gz
 ```
 
@@ -192,6 +192,7 @@ The next step is to load the **bio-apps** and **fastqc** module:
 
 ```bash
 module load bio-apps
+module load fastqc/0.12.1
 ```
 
 And now we run FASTQC, once for each FASTQ file:
@@ -201,7 +202,7 @@ fastqc  # R1_reads here
 fastqc  # R2 reads here
 ```
 
-One of the outputs of FASTQC is a HTML document. Let's look at it by moving it to your laptop. You should see them on the left. Right-click it and select `Download ...`.  
+One of the outputs of FASTQC is a HTML document. Let's look at it by moving it to your laptop. You should find them from the same folder where the sequence flies were located.    
 Remember to download the HTML files for both R1 and R2 reads. In your computer, double-click to open them in your favourite web browser.  
 
 Take a look at the FASTQC reports. How does the data look like?  
@@ -279,7 +280,7 @@ Now take a look at the file "cutadapt_log.txt" with the command **less**:
 * How many low-quality bases were trimmed?
 
 Now let's run FASTQC again, this time using the trimmed genome data:
-But first we need to unload the cutadapt module (`module purge`) and reload biokit module.  
+But first we need to unload the cutadapt module (`module purge`) and reload bio-apps and fastqc modules.  
 
 ```bash
 module purge

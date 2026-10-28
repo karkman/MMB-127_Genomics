@@ -71,7 +71,7 @@ Are there any files here? Let's list the contents of the folder:
 ls
 ```
 
-Let's now create a new folder called "MMB114". In addition to the command (**mkdir**), we are now passing a term (also known as an argument) which, in this case, is the name of the folder we want to create:
+Let's now create a new folder called "MMB127". In addition to the command (**mkdir**), we are now passing a term (also known as an argument) which, in this case, is the name of the folder we want to create:
 
 ```bash
 mkdir MMB127
@@ -90,7 +90,7 @@ HINT (CLICK TO EXPAND)
 
 ---
 
-And now let's enter the "MMB114" folder:
+And now let's enter the "MMB127" folder:
 
 ```bash
 cd MMB127
@@ -252,4 +252,5 @@ Let's list the contents of the folder. What happened to "myfolder"?
 Try taking some online tutorials, e.g.:
 
 * https://www.learnenough.com/command-line-tutorial
-* https://www.codecademy.com/learn/learn-the-command-line
+* https://www.terminaltutor.com/
+* ~https://www.codecademy.com/learn/learn-the-command-line~ (not free anymore)

@@ -147,7 +147,7 @@ You can check which databases are available with:
 And check how abricate works with:
 
 ```bash
-/projappl/$PROJECT/abricate/bin/abricate --help
+/projappl/$PROJECT/pangenome_tykky/bin/abricate --help
 ```
 
 If you want to use the bacmet database, specify database directory with `--datadir /projappl/$PROJECT/Databases/` and the database name with `--db bacmet`.
