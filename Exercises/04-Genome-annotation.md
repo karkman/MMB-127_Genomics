@@ -7,7 +7,8 @@ See the instructions [here](01-UNIX-and-CSC.md#connecting-to-roihu).
 ## Navigating to the  right folder
 
 First things first.  
-When you connect to Puhti, you will be in your home folder. You have all your course data in your own folder under the course projects `/scratch` folder. So by using commands like `csc-workspaces`, `cd`, `ls` and `pwd` make sure you are in the right folder before you start working.  
+When you connect to Roihu, you will be in your home folder. You have all your course data in your own folder under the course projects `/scratch` folder.  
+So by using commands like `csc-workspaces`, `cd`, `ls` and `pwd` make sure you are in the right folder before you start working.  
 
 When your ready and can see your own course folder, you can move on.  
 
@@ -15,14 +16,14 @@ When your ready and can see your own course folder, you can move on.
 
 First we will annotate our genome using a program called [Bakta](https://github.com/oschwengers/bakta). Among other things, Bakta uses a program called [Prodigal](https://github.com/hyattpd/Prodigal) to find genes and then annotates them using several tools.
 
-Let's start by connecting to the interactive partition. Now we will need a little bit more memory than what we get as default, so we need to specify that (and let's also ask for some more CPUs):
+Let's start by connecting to the interactive partition. Now we will need a little bit more memory than what we get as default, so we need to specify that (by asking for more CPUs):
 
 ```bash
-sinteractive --account $PROJECT --cores 4
+sinteractive --account $PROJECT --cores 8
 ```
 
-It also needs its own database files and that they can be found from the `Databases` folder.  
-We can also add some additional data about the strain to guide the annotation. So before running the annotation, we need to fill in some data or leave some options out.  
+Bakta is already installed on Roihu together with its databases, so we only need to load the correct modules.  
+When running the annotation, we can add some additional data about the strain to guide the annotation. So before running the annotation, we need to fill in some data or leave some options out.  
 
 First load bakta module.  
 
@@ -31,8 +32,8 @@ module load bio-apps
 module load py-bakta
 ```
 
-Then have a look a thhe bakta options with `bakta --help`.  
-Then run the annotation with the following command. Make sure to fill in the strain name, genus and locus tag.
+Have a look at the bakta options with `bakta --help`.  
+Then run the annotation with the following command. Make sure to fill in the strain name, genus and locus tag. And also the correct input file.  
 
 ```bash
 bakta \
@@ -44,7 +45,7 @@ bakta \
       --output bakta
 ```
 
-Take a look inside the output folder using `ls`. To understand what are these files that Bakta has created, take a look [here](https://github.com/oschwengers/bakta#output).
+After the run has finished, take a look inside the output folder using `ls`. To understand what are these files that Bakta has created, take a look [here](https://github.com/oschwengers/bakta#output).
 
 Now take a look at the file ending in `.txt` file using `less`. How many protein-coding genes (a.k.a coding sequences, CDSs) were found? And how many rRNA genes/fragments?  
 Then open the file ending in `.tsv`. Look for the 16S rRNA gene from the annotations. Can you locate it from the assembly? We will need this information later today.  
@@ -72,7 +73,7 @@ In case you don't have `IGV` on your own computer, you can use [Proksee](https:/
 
 ## Genome completeness estimation
 
-The completeness of a genome can be estimated using [CheckM2](https://github.com/chklovski/CheckM2). CheckM2 uses a machine learning model o predict the compeleteness and contamination of a genome. The tools was developed for metagenome-assembled genomes, so it also predicts contamination. Contamination is not such a big problem for us as we work with isolate genomes.  
+The completeness of a genome can be estimated using [CheckM2](https://github.com/chklovski/CheckM2). CheckM2 uses a machine learning model to predict the compeleteness of a genome. The tools was developed for metagenome-assembled genomes, so it also predicts contamination. Contamination is not such a big problem for us as we work with isolate genomes.  
 
 So first go to the right folder and allocate resources from a computing node.  
 
@@ -81,7 +82,7 @@ cd /scratch/$PROJECT/$USER/MMB-127_Genomics
 sinteractive --account $PROJECT --cores 12
 ```
 
-Set an environmental variable pointing to the CheckM2 database. Make sure you have asseigned the correct project number to the `$PROJECT` variable.  
+CheckM2 is already installed on Roihu, so we only need to load the correct modules.
 
 ```bash
 module load bio-apps
@@ -106,7 +107,7 @@ Open the output folder of CheckM2 and find a file called `quality_report.tsv`.
 
 The taxonomic annotation of genomes can be done with [GTDB-Tk](https://ecogenomics.github.io/GTDBTk/index.html) against the Genome Taxonomy Database ([GTDB](https://gtdb.ecogenomic.org/)).  
 
-GTDB-Tk and its database are available in Roihu, so we can just load the module.  
+GTDB-Tk and its database are available in Roihu, so again we can just load the module.  
 
 ```bash
 module load bio-apps
@@ -137,7 +138,7 @@ Two most important questions from the above steps:
 
 ## Resistance gene annotation with abricate
 
-To annotate resistance or virulence genes we can use [abricate](https://github.com/tseemann/abricate). Abricate comes with a bunch of pre-installed databases, but additional database can also be installed. For biocide and metal resistance genes, [BacMet database](http://bacmet.biomedicine.gu.se/) has been downloaded to our projects database folder.  
+To annotate resistance or virulence genes we can use [abricate](https://github.com/tseemann/abricate). Abricate comes with a bunch of pre-installed databases, but additional database can also be installed. 
 You can check which databases are available with:
 
 ```bash
@@ -150,4 +151,4 @@ And check how abricate works with:
 /projappl/$PROJECT/pangenome_tykky/bin/abricate --help
 ```
 
-If you want to use the bacmet database, specify database directory with `--datadir /projappl/$PROJECT/Databases/` and the database name with `--db bacmet`.
+If you are interested in heavy metal or biocide resistance, try the [BacMet database](http://bacmet.biomedicine.gu.se/) (`bacmet2`).  
