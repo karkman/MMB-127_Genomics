@@ -142,7 +142,7 @@ To annotate resistance or virulence genes we can use [abricate](https://github.c
 You can check which databases are available with:
 
 ```bash
-/projappl/$PROJECT/abricate/bin/abricate --list
+/projappl/$PROJECT/pangenome_tykky/bin/abricate --list
 ```
 
 And check how abricate works with:
