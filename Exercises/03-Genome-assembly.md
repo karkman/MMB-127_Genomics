@@ -221,7 +221,7 @@ When we have the signature, we can run a search against the database.
 /projappl/$PROJECT/sourmash/bin/sourmash \
     search \
     MMB127.sig \
-    /projappl/$PROJECT/Databases/sourmash/gtdb-reps-rs220-k31.dna.zip \
+    /scratch/$PROJECT/Databases/sourmash/gtdb-reps-rs220-k31.dna.zip \
     -n 20
 ```
 
@@ -234,7 +234,7 @@ You can also use another command `gather` in sourmash to look for more broadly m
 /projappl/$PROJECT/sourmash/bin/sourmash \
     gather \
     MMB127.sig \
-    /projappl/$PROJECT/Databases/sourmash/gtdb-reps-rs220-k31.dna.zip \
+    /scratch/$PROJECT/Databases/sourmash/gtdb-reps-rs220-k31.dna.zip \
     -n 20  \
     2> /dev/null
 ```
