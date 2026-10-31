@@ -1,8 +1,10 @@
 # Day 07: Genome annotation
+
 We will compare the functional annotations of multiple genomes to identify differences in their functional profiles.
 
 
 ## KEGG-based functional analysis of multiple genomes
+
 ```bash
 mkdir -p kegg_ids
 grep -o "KEGG:K....." genome_1.gff3 | tr ":" "\t" > kegg_ids/genome_1_kegg_ids.txt 
@@ -11,6 +13,7 @@ grep -o "KEGG:K....." genome_3.gff3 | tr ":" "\t" > kegg_ids/genome_3_kegg_ids.t
 ```
 
 Select column 1 with kegg id and add column 2 with colors
+
 ```bash
 awk '{print $2 "\tblue"}' genome_1.gff3_kegg_ids.txt> kegg_ids/genome_1.gff3_kegg_ids_color.txt
 awk '{print $2 "\tred"}' genome_2.gff3_kegg_ids.txt> kegg_ids/genome_2.gff3_kegg_ids_color.txt
@@ -21,8 +24,7 @@ cat kegg_ids/genome_1.gff3_kegg_ids_color.txt kegg_ids/genome_2.gff3_kegg_ids_co
 submit file  `kegg_mapper_color.txt` to (https://www.genome.jp/kegg/mapper/color.html)
 ![](../images/kegg_color.png)
 
-
-what are the main difference between your genome and the public genomes? 
+what are the main difference between your genome and the public genomes?  
 Do they differ in main metabolism and secondary metabolism?
 
 ## MacSynfinder
@@ -56,19 +58,22 @@ while IFS= read -r fasta; do
   -o macsyfinder/"$sample"
 done < files_list.txt
 ```
+
 check file `macsyfinder/genome_1/best_solution_summary.tsv`
 
 ## Antismash (Secondary metabolites)
+
 If you're interested on the secondary metabolites your strain produces (such as antibiotics or other bioactive molecules)
+
 * Go to https://antismash.secondarymetabolites.org/#!/start
 * Upload bakta.gbff one at a time
 
 ## Alternative: antiSMASH command-line version :muscle:
+
 ```bash
 module load bio-apps/v202603
 module load antismash/8.0.4
 ```
-
 
 ```bash
 antismash bakta.gbff \
@@ -78,14 +83,19 @@ antismash bakta.gbff \
   --cpus 8
   --no-zip-output --cb-knownclusters --cb-subclusters --cc-mibig
 ```
+
 Running antiSMASH on multiple genomes
+
 ```bash
 for bakta_gbff in *.gbff; do antismash "$bakta_gbff" --taxon bacteria --output-dir antismash_out/"${bakta_gbff%.gbff}" --cpus 8 --databases /scratch/$PROJECT//DATABASES/antismash_db --no-zip-output --cb-knownclusters --cb-subclusters --cc-mibig; done
 ```
+
 or
+
 ```bash
 for bakta_gbff in bakta/*.gbff; do name=$(basename "$bakta_gbff" .gbff); antismash "$bakta_gbff" --taxon bacteria --output-dir antismash_out/"$bakta_gbff" --cpus 8 --databases /scratch/$PROJECT//DATABASES/antismash_db --no-zip-output --cb-knownclusters --cb-subclusters --cc-mibig; done
 ```
 
 ## Ecological inference
+
 Can your isolate be found in other environments? Which environments? (https://branchwater.sourmash.bio/)
