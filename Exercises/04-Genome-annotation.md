@@ -41,7 +41,7 @@ bakta \
       --prefix # our strain name \
       --genus # type here \
       --locus # your strain name \
-      --threads 4 \
+      --threads $SLURM_CPUS_PER_TASK \
       --output bakta
 ```
 
