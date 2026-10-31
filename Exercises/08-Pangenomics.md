@@ -37,4 +37,4 @@ We are going to use ITOL (https://itol.embl.de/) to visualize and upload our phy
 
 ![itol front page](../images/itol_1.png)
 
-* Click on Upload
+* Click on __Upload a tree__

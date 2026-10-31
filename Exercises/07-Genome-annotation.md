@@ -23,7 +23,7 @@ cat kegg_ids/genome_1.gff3_kegg_ids_color.txt kegg_ids/genome_2.gff3_kegg_ids_co
 submit file  `kegg_mapper_color.txt` to (https://www.genome.jp/kegg/mapper/color.html)
 ![kegg pathways](../images/kegg_color.png)
 
-what are the main difference between your genome and the public genomes?  
+What are the main difference between your genome and the public genomes?  
 Do they differ in main metabolism and secondary metabolism?
 
 ## MacSynfinder
