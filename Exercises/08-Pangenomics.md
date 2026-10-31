@@ -35,6 +35,6 @@ iqtree3 -s roary_output/core_gene_alignment.aln -m MFP -B 1000 -T AUTO --prefix 
 
 We are going to use ITOL (https://itol.embl.de/) to visualize and upload our phylogenetic trees
 
-![](../images/itol_1.png)
+![itol front page](../images/itol_1.png)
 
 * Click on Upload

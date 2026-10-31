@@ -2,7 +2,6 @@
 
 We will compare the functional annotations of multiple genomes to identify differences in their functional profiles.
 
-
 ## KEGG-based functional analysis of multiple genomes
 
 ```bash
@@ -22,7 +21,7 @@ cat kegg_ids/genome_1.gff3_kegg_ids_color.txt kegg_ids/genome_2.gff3_kegg_ids_co
 ```
 
 submit file  `kegg_mapper_color.txt` to (https://www.genome.jp/kegg/mapper/color.html)
-![](../images/kegg_color.png)
+![kegg pathways](../images/kegg_color.png)
 
 what are the main difference between your genome and the public genomes?  
 Do they differ in main metabolism and secondary metabolism?
@@ -30,7 +29,7 @@ Do they differ in main metabolism and secondary metabolism?
 ## MacSynfinder
 
 Determine Bacterial scretion systems in your bacteria (https://github.com/gem-pasteur/macsyfinder)
-![](../images/secretion_systems.png)
+![secretion systems](../images/secretion_systems.png)
 
 ```bash
 export PATH="/projappl/$PROJECT/macsyfinder/bin:$PATH"

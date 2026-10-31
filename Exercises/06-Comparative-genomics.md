@@ -6,7 +6,7 @@ To determine the taxonomic position of the genome. We will compare it with refer
 
 * Submit your genomes in https://ggdc.dsmz.de/ggdc.php
 * Please remember to include your email address in the contact details. You will receive the results by email.
-![](../images/dDDH.png).
+![dDDh](../images/dDDH.png).
 
 ## Calculate average nucleotide identity (ANI)
 
@@ -17,7 +17,7 @@ To determine the taxonomic position of the genome. We will compare it with refer
 * Copy the ANI value and paste it into an Excel file.
 * Repeat the same process with the other reference genomes.
 
-![](../images/excel_ANI.png)
+![ANI excel](../images/excel_ANI.png)
 
 ### Alternative ANI command-line version
 
