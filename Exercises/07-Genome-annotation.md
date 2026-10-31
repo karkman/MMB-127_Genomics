@@ -1,4 +1,4 @@
-# Day 07: Genome annotation
+# Day 7: Genome annotation
 
 We will compare the functional annotations of multiple genomes to identify differences in their functional profiles.
 

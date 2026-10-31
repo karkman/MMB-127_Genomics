@@ -1,4 +1,4 @@
-# Day 5: Genome annotation
+# Day 4: Genome annotation
 
 ## Connecting to Roihu
 

@@ -1,4 +1,4 @@
-# Day 6: Metabolic pathway analysis
+# Day 5: Metabolic pathway analysis
 
 ## Investigating metabolic pathways
 
