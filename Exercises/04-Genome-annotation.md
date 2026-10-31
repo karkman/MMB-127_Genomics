@@ -84,7 +84,7 @@ sinteractive --account $PROJECT --cores 12
 
 CheckM2 is already installed on Roihu, so we only need to load the correct modules.
 
-```bash
+```bash 
 module load bio-apps
 module load checkm2
 ```
@@ -122,7 +122,6 @@ gtdbtk classify_wf \
       --extension .fasta \
       --scratch_dir $TMPDIR \
       --tmpdir $TMPDIR \
-      --skip_ani_screen \
       --min_perc_aa 0 \
       --pplacer_cpus 1 \
       --cpus $SLURM_CPUS_PER_TASK \
