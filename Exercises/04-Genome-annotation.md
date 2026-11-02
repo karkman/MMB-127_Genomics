@@ -79,7 +79,7 @@ So first go to the right folder and allocate resources from a computing node.
 
 ```bash
 cd /scratch/$PROJECT/$USER/MMB-127_Genomics
-sinteractive --account $PROJECT --cores 12
+sinteractive --account $PROJECT --cores 12 --mem 24G
 ```
 
 CheckM2 is already installed on Roihu, so we only need to load the correct modules.
