@@ -19,7 +19,7 @@ First we will annotate our genome using a program called [Bakta](https://github.
 Let's start by connecting to the interactive partition. Now we will need a little bit more memory than what we get as default, so we need to specify that (by asking for more CPUs):
 
 ```bash
-sinteractive --account $PROJECT --cores 8
+sinteractive --account $PROJECT --cores 12
 ```
 
 Bakta is already installed on Roihu together with its databases, so we only need to load the correct modules.  
