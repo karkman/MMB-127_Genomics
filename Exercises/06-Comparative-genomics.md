@@ -8,8 +8,8 @@ Go to NCBI Datasets and download the closest genome reference identified in the 
 
 1. In the same file, check the `closest_genome_reference` column and download fewer than 10 genomes belonging to the same species. 
    * Select genomes annotated by NCBI RefSeq
-   * Download both the genome sequences (FASTA) and the annotation features (GFF).
-![](../images/NCBI_datasets_1.png)
+   * Download the genome sequences (FASTA).
+![](../images/NCBI_datasets_3.png)
    * :warning: **NOTE: Make sure that all genomes downloaded from NCBI are of good quality. Check their assembly quality, completeness, and contamination levels before downloading them.**
 ![](../images/NCBI_datasets_2.png)
 2. In the same file, check the `other_related_references` column and select additional genomes with the highest ANI values, ensuring that they represent different species and different genera listed in this column.
@@ -19,11 +19,17 @@ Go to NCBI Datasets and download the closest genome reference identified in the 
    * Select genomes identified as type material (if possible)
    * Under Download packages, select Genome sequences (FASTA) only.
    * :warning: **NOTE: Make sure that all genomes downloaded from NCBI are of good quality. Check their assembly quality, completeness, and contamination levels before downloading them.**
-![](../images/NCBI_datasets_3.png)
-3. Organize all downloaded files into two separate folders:
+3. Organize all downloaded files into one folder:
    * One folder containing all genome sequences in FASTA format.
-   * Another folder containing all GFF3 annotation files.
 4. Today, we will use the fasta format files to calculate genome related indices.
+5. Rename your genome FASTA files using clear and descriptive names so that the results are easier to read and interpret. we can rename it using the command `mv`
+   * Example:
+```bash
+mv GCF_015163715.1.fna Pseudomonas_cyclaminis_GCF_015163715.1.fna
+mv GCA_001747385.1.fna Pseudomonas_fluorescens_GCA_001747385.1.fna
+mv GCA_016613245.1.fna Pseudomonas_fluorescens_GCA_016613245.1.fna
+
+```
 
 ## Calculate DNA–DNA hybridization (dDDH)
 
