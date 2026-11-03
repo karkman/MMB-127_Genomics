@@ -74,5 +74,5 @@ ezaai calculate -i db/ -j db/ -o aai_results.tsv -t 8
 Based on the ANI and dDDH values, does the genome represent a previously described species or a potentially novel species?
 Does the genome represent a new strain?
 * If you are not sure about the thresholds check:
-[Konstantinos T. Konstantinidis., 2023](https://onlinelibrary.wiley.com/doi/10.1002/mlf2.12088)
-[Trujillo and Riesco., 2024](https://www.microbiologyresearch.org/content/journal/ijsem/10.1099/ijsem.0.006300)
+  * [Konstantinos T. Konstantinidis., 2023](https://onlinelibrary.wiley.com/doi/10.1002/mlf2.12088)
+  * [Trujillo and Riesco., 2024](https://www.microbiologyresearch.org/content/journal/ijsem/10.1099/ijsem.0.006300)
