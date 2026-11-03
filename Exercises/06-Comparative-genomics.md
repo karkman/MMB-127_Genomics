@@ -58,7 +58,7 @@ export PATH="/projappl/$PROJECT/ezaai_tykky/bin:$PATH"
 
 Secondly, we extract profiles DB from genomes using prodigal
 Here’s what extract does:
-    1. It takes your genome sequences (DNA, usually FASTA files of assembled genomes) as input.
+    1. It takes your genome sequences (FASTA files of assembled genomes) as input.
     2. It runs Prodigal, a gene-finding program, to locate the protein-coding genes in each genome and translate them into protein sequences.
     3. It saves those proteins as a profile DB, a ready-made database file for each genome that the next step can compare quickly.
 ```bash
