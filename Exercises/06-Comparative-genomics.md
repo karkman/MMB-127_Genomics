@@ -2,6 +2,28 @@
 
 To determine the taxonomic position of the genome. We will compare it with reference genomes of type strains by calculating digital DNA–DNA hybridization (dDDH) and average nucleotide identity (ANI) values.
 
+
+# Downloading reference genomes from NCBI Datasets (https://www.ncbi.nlm.nih.gov/datasets/)
+Go to NCBI Datasets and download the closest genome reference identified in the GTDB-Tk results file:`gtdbtk.bac120.summary.tsv`.
+
+1. In the same file, check the `closest_genome_reference` column and download fewer than 10 genomes belonging to the same species. 
+   * Select genomes annotated by NCBI RefSeq
+   * Download both the genome sequences (FASTA) and the annotation features (GFF).
+**NOTE: Make sure that all genomes downloaded from NCBI are of good quality. Check their assembly quality, completeness, and contamination levels before selecting them.**
+2. In the same file, check the `other_related_references` and and select additional genomes with the highest ANI values, ensuring that they represent different species and different genera listed in this column.
+   If no different genera are represented in the `other_related_references column`, search NCBI Datasets and select one or two additional genomes representing different genera.
+   To download the genomes in `NCBI datasets`, 
+   * Select genomes annotated by NCBI RefSeq
+   * Select genomes identified as type material (if possible)
+   * Under Download packages, select Genome sequences (FASTA) only.
+**NOTE: Make sure that all genomes downloaded from NCBI are of good quality. Check their assembly quality, completeness, and contamination levels before selecting them.**
+3. Organize all downloaded files into two separate folders:
+   * One folder containing all genome sequences in FASTA format.
+   * Another folder containing all GFF3 annotation files.
+
+4. Today, we will use the fasta format files to calculate genome related indices. We will use the GFF3 files tomorrow for pangenomics
+
+
 ## Calculate DNA–DNA hybridization (dDDH)
 
 * Submit your genomes in https://ggdc.dsmz.de/ggdc.php
