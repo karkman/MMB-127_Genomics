@@ -1,6 +1,42 @@
 # Day 7: Genome annotation
 
 We will compare the functional annotations of multiple genomes to identify differences in their functional profiles.
+For this, we will run Bakta on all the genomes downloaded from NCBI.
+
+## Run bakta in all genomes
+
+1. Step 1: make the list of genomes
+```bash
+ls genomes/*.fna > namelist
+```
+2. save this as bakta.sh
+
+```bash
+#!/bin/bash -l
+#SBATCH --job-name=bakta
+#SBATCH --output=bakta_%A_%a.out
+#SBATCH --error=bakta_%A_%a.err
+#SBATCH --account=<project>
+#SBATCH --partition=small
+#SBATCH --time=02:00:00
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=8
+#SBATCH --mem=16G
+#SBATCH --array=1-10
+
+module load bio-apps
+module load py-bakta
+
+name=$(sed -n "$SLURM_ARRAY_TASK_ID"p namelist)
+
+bakta --output $name.bakta --threads 8 $name
+```
+3. submit it
+
+```bash
+sbatch bakta.sh
+```
+
 
 ## KEGG-based functional analysis of multiple genomes
 
