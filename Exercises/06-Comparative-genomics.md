@@ -19,18 +19,15 @@ Go to NCBI Datasets and download the closest genome reference identified in the 
    * Select genomes identified as type material (if possible)
    * Under Download packages, select Genome sequences (FASTA) only.
    * :warning: **NOTE: Make sure that all genomes downloaded from NCBI are of good quality. Check their assembly quality, completeness, and contamination levels before downloading them.**
-
+![](../images/NCBI_datasets_3.png)
 3. Organize all downloaded files into two separate folders:
    * One folder containing all genome sequences in FASTA format.
    * Another folder containing all GFF3 annotation files.
-
-
-4. Today, we will use the fasta format files to calculate genome related indices. We will use the GFF3 files tomorrow for pangenomics
-
+4. Today, we will use the fasta format files to calculate genome related indices.
 
 ## Calculate DNA–DNA hybridization (dDDH)
 
-* Submit your genomes in https://ggdc.dsmz.de/ggdc.php
+* Submit your genomes (fasta format) in https://ggdc.dsmz.de/ggdc.php
 * Please remember to include your email address in the contact details. You will receive the results by email.
 ![dDDh](../images/dDDH.png)
 
@@ -51,7 +48,7 @@ Go to NCBI Datasets and download the closest genome reference identified in the 
 java -jar /projappl/$PROJECT/OAU.jar -u /projappl/$PROJECT/usearch11 -fd path/to/genomes/ -n 8 -fmt matrix -o ani_matrix.txt
 ```
 
-## Average amino acid identity
+## Average amino acid identity (https://endixk.github.io/ezaai/)
 
 We are going to call the program first
 
@@ -59,19 +56,20 @@ We are going to call the program first
 export PATH="/projappl/$PROJECT/ezaai_tykky/bin:$PATH"
 ```
 
-Secondly, we create databases for each protein annotation
-
+Secondly, we extract profiles DB from genomes using prodigal
+Here’s what extract does:
+    1. It takes your genome sequences (DNA, usually FASTA files of assembled genomes) as input.
+    2. It runs Prodigal, a gene-finding program, to locate the protein-coding genes in each genome and translate them into protein sequences.
+    3. It saves those proteins as a profile DB, a ready-made database file for each genome that the next step can compare quickly.
 ```bash
-ezaai convert -i proteins_1.faa -s prot -o db/proteins_1.db
-ezaai convert -i proteins_2.faa -s prot -o db/proteins_2.db
-ezaai convert -i proteins_3.faa -s prot -o db/proteins_3.db
+ezaai extract -i genome_1.fasta -o db/genome_1.db
+ezaai extract -i genome_2.fasta -o db/genome_2.db
+ezaai extract -i genome_3.fasta -o db/genome_3.db
 ```
-
 Finally, we run ezaai
 
 ```bash
 ezaai calculate -i db/ -j db/ -o aai_results.tsv -t 8
 ```
-
 Based on the ANI and dDDH values, does the genome represent a previously described species or a potentially novel species?
 Does the genome represent a new strain?
