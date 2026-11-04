@@ -18,7 +18,7 @@ By looking at the different metabolic pathways encoded by our genome, let's try 
   * Gets energy
   * Gets carbon and nitrogen
   * Survives in stress
-  * Move around
+  * Moves around
 
 What other interesting traits can you find from your genome?  
 
