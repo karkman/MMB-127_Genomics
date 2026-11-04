@@ -14,7 +14,7 @@ To investigate the pathways further we will use a tool from KEGG called "KEGG ma
 
 By looking at the different metabolic pathways encoded by our genome, let's try to answer:
 
-* How does the strain
+* How the strain
   * Gets energy
   * Gets carbon and nitrogen
   * Survives in stress
