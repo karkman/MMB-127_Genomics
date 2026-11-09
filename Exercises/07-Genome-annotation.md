@@ -70,7 +70,7 @@ Determine Bacterial scretion systems in your bacteria (https://github.com/gem-pa
 ```bash
 export PATH="/projappl/$PROJECT/macsyfinder/bin:$PATH"
 ```
- * :warning: **NOTE: Do not work with hypotheticals.faa	
+:warning: NOTE: Do not work with hypotheticals.faa	
 
 ```bash
 macsyfinder --db-type ordered_replicon \
