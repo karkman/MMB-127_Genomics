@@ -30,7 +30,7 @@ FastTree is a fast and computationally efficient tool for inferring phylogenetic
 ```bash
 export PATH="/projappl/project_2020859/pangenome_tykky/bin:$PATH"
 FastTree -nt -gtr roary_output/core_gene_alignment.aln > roary_output/my_tree.newick
-python roary_plots.py roary_output/my_tree.newick roary_output/gene_presence_absence.csv
+python /projappl/project_2007691/roary_plots.py roary_output/my_tree.newick roary_output/gene_presence_absence.csv
 ```
 
 ### Using IQ-TREE (https://iqtree.github.io/)
