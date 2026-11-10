@@ -24,7 +24,7 @@ roary -p 16 -f roary_output -e -n gff3/*.gff3
 
 ## Build a phylogenetic tree
 
-### Using FastTree
+### Using FastTree (https://morgannprice.github.io/fasttree/)
 
 FastTree is a fast and computationally efficient tool for inferring phylogenetic trees. It uses a distance-based approach, similar to neighbor-joining (NJ), to generate an initial tree, which is then refined using an approximate maximum-likelihood method through a limited number of optimization rounds.
 
