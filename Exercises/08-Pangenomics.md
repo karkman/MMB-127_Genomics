@@ -50,6 +50,10 @@ We are going to use ITOL (https://itol.embl.de/) to visualize and upload our phy
 
 * Click on __Upload a tree__
 
+* Add the bootstrap values or local support values to the phylogenetic tree.
+![](../images/bootstraps.png)
+* Root the tree using either midpoint rooting or an outgroup.
+![](../images/re-rooting_tree.png)
 
 
 # Visualize the pangenome results
