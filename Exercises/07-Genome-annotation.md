@@ -97,6 +97,11 @@ done < files_list.txt
 
 check file `macsyfinder/genome_1/best_solution_summary.tsv`
 
+If you want, you can combine all the results into a single file.
+```bash
+ grep -hv '^#' macsyfinder/*/best_solution_summary.tsv | grep -v '^$' | sed '1!{/^replicon/d}' >summary_all.tsv
+```
+
 ## Antismash (Secondary metabolites)
 
 If you're interested on the secondary metabolites your strain produces (such as antibiotics or other bioactive molecules)
