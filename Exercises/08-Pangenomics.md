@@ -6,6 +6,11 @@ Finally, we will construct a maximum-likelihood phylogenetic tree using the core
 ## Roary (https://sanger-pathogens.github.io/Roary/)
 
 ```bash
+module load bio-apps/v202603
+module load roary/3.13.0
+```
+
+```bash
 roary -f roary_output -e -n bakta/*.gff3
 ```
 
