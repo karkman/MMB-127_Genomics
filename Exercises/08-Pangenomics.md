@@ -87,3 +87,4 @@ module load bio-apps/v202603
 module load roary/3.13.0
 python /projappl/project_2020859/roary_plots.py core_tree.newick gene_presence_absence_roary.csv
 ```
+check `pangenome_frequency.png` `pangenome_matrix.png` `pangenome_pie.png`
