@@ -137,6 +137,11 @@ or
 for bakta_gbff in bakta/*.gbff; do name=$(basename "$bakta_gbff" .gbff); antismash "$bakta_gbff" --taxon bacteria --output-dir antismash_out/"$bakta_gbff" --cpus 8 --databases /scratch/$PROJECT//DATABASES/antismash_db --no-zip-output --cb-knownclusters --cb-subclusters --cc-mibig; done
 ```
 
+summarise all antismash results
+```bash
+python /projappl/project_2020859/summarize_antismash.py antismash_out/ pseudomonas_antimash_output
+```
+
 ## Ecological inference
 
 Can your isolate be found in other environments? Which environments? (https://branchwater.sourmash.bio/)
