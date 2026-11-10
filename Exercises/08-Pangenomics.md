@@ -22,7 +22,7 @@ module load roary/3.13.0
 roary -p 16 -f roary_output -e -n gff3/*.gff3
 ```
 
-## Optional:An alternative to Roary, in case it takes too long to run, Panaroo (https://gthlab.au/panaroo/#/)
+## Optional: Use Panaroo as an alternative to Roary if Roary takes too long to run. (https://gthlab.au/panaroo/#/)
 ```bash
 module purge
 export PATH="/projappl/project_2007691/panaroo_tykky/bin:$PATH"
