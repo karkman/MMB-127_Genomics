@@ -12,13 +12,13 @@ cp *bakta/*gff3 gff3/.
 ```
 
 ```bash
-sinteractive --account $PROJECT --cores 8 --mem 16000 --time 04:00:00
+sinteractive --account $PROJECT --cores 16 --mem 16000 --time 04:00:00
 module load bio-apps/v202603
 module load roary/3.13.0
 ```
 
 ```bash
-roary -f roary_output -e -n gff3/*.gff3
+roary -p 16 -f roary_output -e -n gff3/*.gff3
 ```
 
 ## Build a phylogenetic tree
