@@ -28,7 +28,7 @@ roary -p 16 -f roary_output -e -n gff3/*.gff3
 FastTree is a fast and computationally efficient tool for inferring phylogenetic trees. It uses a distance-based approach, similar to neighbor-joining (NJ), to generate an initial tree, which is then refined using an approximate maximum-likelihood method through a limited number of optimization rounds.
 
 ```bash
-export PATH="/projappl/project_2020859/pangenome_tykky/bin:$PATH"/bin:$PATH"
+export PATH="/projappl/project_2020859/pangenome_tykky/bin:$PATH"
 FastTree -nt -gtr roary_output/core_gene_alignment.aln > roary_output/my_tree.newick
 python roary_plots.py roary_output/my_tree.newick roary_output/gene_presence_absence.csv
 ```
