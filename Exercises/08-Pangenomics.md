@@ -32,12 +32,6 @@ export PATH="/projappl/project_2020859/pangenome_tykky/bin:$PATH"
 FastTree -nt -gtr roary_output/core_gene_alignment.aln > roary_output/my_tree.newick
 ```
 
-```bash
-module load bio-apps/v202603
-module load roary/3.13.0
-python /projappl/project_2007691/roary_plots.py roary_output/my_tree.newick roary_output/gene_presence_absence.csv
-```
-
 ### Using IQ-TREE (https://iqtree.github.io/)
 
 IQ-TREE is a tool that infers phylogenetic trees by maximum likelihood, with automatic model selection and fast bootstrap support.
@@ -55,3 +49,15 @@ We are going to use ITOL (https://itol.embl.de/) to visualize and upload our phy
 ![itol front page](../images/itol_1.png)
 
 * Click on __Upload a tree__
+
+
+
+# Visualize the pangenome results
+
+```bash
+module load bio-apps/v202603
+module load roary/3.13.0
+python /projappl/project_2007691/roary_plots.py roary_output/my_tree.newick roary_output/gene_presence_absence.csv
+```
+check `pangenome_frequency.png` `pangenome_matrix.png` `pangenome_pie.png`
+
