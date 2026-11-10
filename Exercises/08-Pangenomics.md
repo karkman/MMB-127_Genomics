@@ -22,6 +22,17 @@ module load roary/3.13.0
 roary -p 16 -f roary_output -e -n gff3/*.gff3
 ```
 
+## An alternative to Roary, in case it takes too long to run: Panaroo (https://gthlab.au/panaroo/#/)
+```bash
+module purge
+export PATH="/projappl/project_2007691/panaroo_tykky/bin:$PATH"
+panaroo -i gff3/*.gff3 -o panaroo_roarylike -t 16 --clean-mode sensitive --refind-mode off -c 0.95 -f 0.95 \
+        --core_threshold 0.99 -a core --aligner mafft
+
+```
+
+
+
 ## Build a phylogenetic tree
 
 ### Using FastTree (https://morgannprice.github.io/fasttree/)
@@ -30,8 +41,11 @@ FastTree is a fast and computationally efficient tool for inferring phylogenetic
 
 ```bash
 export PATH="/projappl/project_2020859/pangenome_tykky/bin:$PATH"
-FastTree -nt -gtr roary_output/core_gene_alignment.aln > roary_output/my_tree.newick
+FastTree -nt -gtr roary_output or panaroo/core_gene_alignment.aln > roary_output/my_tree.newick
 ```
+
+
+
 
 ### Using IQ-TREE (https://iqtree.github.io/)
 
@@ -58,7 +72,7 @@ We are going to use ITOL (https://itol.embl.de/) to visualize and upload our phy
 
 
 # Visualize the pangenome results
-
+## Using roary
 ```bash
 module load bio-apps/v202603
 module load roary/3.13.0
@@ -66,3 +80,10 @@ python /projappl/project_2007691/roary_plots.py roary_output/my_tree.newick roar
 ```
 check `pangenome_frequency.png` `pangenome_matrix.png` `pangenome_pie.png`
 
+## Using Panaroo
+```bash
+cd results_panaroo
+module load bio-apps/v202603
+module load roary/3.13.0
+python /projappl/project_2020859/roary_plots.py core_tree.newick gene_presence_absence_roary.csv
+```
