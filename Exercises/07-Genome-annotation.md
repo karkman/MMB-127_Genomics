@@ -154,3 +154,46 @@ python /projappl/project_2020859/summarize_antismash.py antismash_out/ pseudomon
 ## Ecological inference
 
 Can your isolate be found in other environments? Which environments? (https://branchwater.sourmash.bio/)
+
+
+## Optional eggnog_mapper functional annotation
+
+```bash
+mkdir -r eggnog_results
+ls bakta/proteins/*.faa > protein_list.txt
+```
+
+Run eggnog mapper with multiple genomes
+```bash
+#!/bin/bash
+#SBATCH --job-name=eggnog
+#SBATCH --account=project_2020859
+#SBATCH --partition=longrun
+#SBATCH --output=logs/eggnog_%A_%a.out
+#SBATCH --error=logs/eggnog_%A_%a.err
+#SBATCH --array=1-10
+#SBATCH --cpus-per-task=8
+#SBATCH --time=230:00:00
+#SBATCH --mem=16G
+
+module load bio-apps/v202603
+module load eggnog-mapper/2.1.15
+
+isolate=$(sed -n "$SLURM_ARRAY_TASK_ID"p protein_list.txt)
+
+bakta --output $name.bakta --threads 8 $name
+
+name=$(basename "$isolate" .faa)
+
+emapper.py -m diamond -i "$isolate" \\
+    --itype proteins \\
+    --data_dir /dataset/project_2020373/DATABASES/eggnog-data \\
+    -o eggnog_results/$name" \\
+    --cpu 8 \\
+    --override
+```
+```bash
+#sbatch eggnog.sh
+```
+
+
