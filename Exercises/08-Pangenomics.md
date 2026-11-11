@@ -25,7 +25,7 @@ roary -p 16 -f roary_output -e -n gff3/*.gff3
 ## Optional: Use Panaroo as an alternative to Roary if Roary takes too long to run. (https://gthlab.au/panaroo/#/)
 ```bash
 module purge
-export PATH="/projappl/project_2007691/panaroo_tykky/bin:$PATH"
+export PATH="/projappl/project_2020859/panaroo_tykky/bin:$PATH"
 panaroo -i gff3/*.gff3 -o panaroo_roarylike -t 16 --clean-mode sensitive --refind-mode off -c 0.95 -f 0.95 \
         --core_threshold 0.99 -a core --aligner mafft
 
