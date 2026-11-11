@@ -76,7 +76,7 @@ We are going to use ITOL (https://itol.embl.de/) to visualize and upload our phy
 ```bash
 module load bio-apps/v202603
 module load roary/3.13.0
-python /projappl/project_2007691/roary_plots.py roary_output/my_tree.newick roary_output/gene_presence_absence.csv
+python /projappl/project_2020859/roary_plots.py roary_output/my_tree.newick roary_output/gene_presence_absence.csv
 ```
 check `pangenome_frequency.png` `pangenome_matrix.png` `pangenome_pie.png`
 

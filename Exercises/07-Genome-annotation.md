@@ -181,14 +181,12 @@ module load eggnog-mapper/2.1.15
 
 isolate=$(sed -n "$SLURM_ARRAY_TASK_ID"p protein_list.txt)
 
-bakta --output $name.bakta --threads 8 $name
-
 name=$(basename "$isolate" .faa)
 
 emapper.py -m diamond -i "$isolate" \\
     --itype proteins \\
     --data_dir /dataset/project_2020373/DATABASES/eggnog-data \\
-    -o eggnog_results/$name" \\
+    -o eggnog_results/$name \\
     --cpu 8 \\
     --override
 ```
