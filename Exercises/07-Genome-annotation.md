@@ -134,7 +134,16 @@ for bakta_gbff in *.gbff; do antismash "$bakta_gbff" --taxon bacteria --output-d
 or
 
 ```bash
-for bakta_gbff in bakta/*.gbff; do name=$(basename "$bakta_gbff" .gbff); antismash "$bakta_gbff" --taxon bacteria --output-dir antismash_out/"$bakta_gbff" --cpus 8 --databases /scratch/$PROJECT//DATABASES/antismash_db --no-zip-output --cb-knownclusters --cb-subclusters --cc-mibig; done
+ mkdir -p antismash_out
+for bakta_gbff in gbff/*.gbff; do 
+name=$(basename "$bakta_gbff" .gbff)
+mkdir -p antismash_out/$bakta_gbff
+antismash "$bakta_gbff" --taxon bacteria --output-dir antismash_out/"$bakta_gbff" --cpus 8 \
+--databases /scratch/project_2020859/DATABASES/antismash_db --no-zip-output --cb-knownclusters --cb-subclusters --cc-mibig \
+--genefinding-tool prodigal
+done
+
+
 ```
 
 summarise all antismash results
