@@ -168,26 +168,31 @@ Run eggnog mapper with multiple genomes
 #!/bin/bash
 #SBATCH --job-name=eggnog
 #SBATCH --account=project_2020859
-#SBATCH --partition=longrun
+#SBATCH --partition=small
 #SBATCH --output=logs/eggnog_%A_%a.out
 #SBATCH --error=logs/eggnog_%A_%a.err
-#SBATCH --array=1-10
+#SBATCH --array=1-5
 #SBATCH --cpus-per-task=8
-#SBATCH --time=230:00:00
-#SBATCH --mem=16G
+#SBATCH --time=12:00:00
+#SBATCH --mem=32G
+
+
 
 module load bio-apps/v202603
 module load eggnog-mapper/2.1.15
 
-isolate=$(sed -n "$SLURM_ARRAY_TASK_ID"p protein_list.txt)
 
+isolate=$(sed -n "${SLURM_ARRAY_TASK_ID}p" protein_list.txt)
 name=$(basename "$isolate" .faa)
 
-emapper.py -m diamond -i "$isolate" \\
-    --itype proteins \\
-    --data_dir /dataset/project_2020373/DATABASES/eggnog-data \\
-    -o eggnog_results/$name \\
-    --cpu 8 \\
+mkdir -p eggnog_results
+
+emapper.py -m diamond -i "$isolate" \
+    --itype proteins \
+    --data_dir /dataset/project_2020373/DATABASES/eggnog-data/eggnog-data \
+    --output_dir eggnog_results \
+    -o "$name" \
+    --cpu "$SLURM_CPUS_PER_TASK" \
     --override
 ```
 ```bash
