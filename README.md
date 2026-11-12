@@ -12,7 +12,7 @@ Bacterial genomics hands-on course at the University of Helsinki.
 
 ## Learning outcomes
 
-__After completing this module, you will be able to:__
+__After completing this course, you will be able to:__
 
 * Select the most appropriate sequencing platform for a bacterial genome sequencing experiment, taking into account the research question, genome characteristics, expected data quality, read length, throughput, cost, and available resources.
 * Assess and critically evaluate the quality of raw sequencing data using appropriate quality-control metrics and tools, and determine its suitability for downstream analysis.
