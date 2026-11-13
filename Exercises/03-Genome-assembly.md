@@ -196,7 +196,7 @@ We will go thru the steps together once the file is loaded in `Bandage`.
 
 We will use a program called [Sourmash](https://sourmash.readthedocs.io/en/latest/) to quickly search our assembly against the Genome Taxonomy Database ([GTDB](https://gtdb.ecogenomic.org/)). Sourmash uses k-mers and hash sketches (signatures in sourmash) to speed up the search and can be used for very large data sets (raw reads, metagenomes, ...). You can read more about sourmash and hash sketches by following the link.  
 GTDB is a database and an effort to standardise microbial taxonomy based on genome information. We will use a pre-compiled version suitable for sourmash.  
-Sourmash is not (yet) available in Puhti, so we will run it from a Singularity container. You don't need to worry about what Singularity containers are. In short and simplified, containers enable to pack all the needed software in a single file that can be used to run the program on e.g. Puhti.  
+Sourmash is not (yet) available in Puhti, so we will run it from a Singularity container. You don't need to worry about what Singularity containers are. In short and simplified, containers enable to pack all the needed software in a single file that can be used to run the program on e.g. Roihu.  
 The Singularity container can be found from The `Env` folder and the GTDB database from `DB` folder.  
 
 First we need to build a hash sketchs from our assembly. And we need an interactive session for that.  
