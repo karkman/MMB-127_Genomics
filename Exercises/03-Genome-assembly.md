@@ -49,7 +49,7 @@ flye \
 
 ## Nanopore assembly quality
 
-Now we will run a program called [QUAST](https://quast.sourceforge.net/quast) to evaluate the quality of the assembly. We start by connecting to the interactive partition and loading the QUAST module:
+Now we will run a program called [QUAST](https://github.com/ablab/quast) to evaluate the quality of the assembly. We start by connecting to the interactive partition and loading the QUAST module:
 
 ```bash
 sinteractive -A $PROJECT
