@@ -12,7 +12,7 @@ Bacterial genomics hands-on course at the University of Helsinki.
 
 ## Learning outcomes
 
-__After completing this module, you will be able to:__
+__After completing this course, you will be able to:__
 
 * Select the most appropriate sequencing platform for a bacterial genome sequencing experiment, taking into account the research question, genome characteristics, expected data quality, read length, throughput, cost, and available resources.
 * Assess and critically evaluate the quality of raw sequencing data using appropriate quality-control metrics and tools, and determine its suitability for downstream analysis.
@@ -40,4 +40,4 @@ Day 5: Metabolic pathway analysis | [Lecture slides](lectures/06_Metabolic_pathw
 Day 6: Comparative genomics | [Lecture slides](lectures/07_Comparative_genomics.pdf) | [Exercises](Exercises/06-Comparative-genomics.md) |
 Day 7: Genome annotation | [Lecture slides](lectures/08_genome_annotation.pdf) | [Exercises](Exercises/07-Genome-annotation.md) |
 Day 8: Pangenomics | [Lecture slides](lectures/09_pangenomics.pdf) | [Exercises](Exercises/08-Pangenomics.md)  |
-Day 9: Wrap up | [Lecture slides](lectures/00_wrap-up.pdf) |  |
+Day 9: Wrap up | [Lecture slides](lectures/00_wrap-up.pdf) | [Exercises](Exercises/09_Wrap_up.md)  |

@@ -97,6 +97,11 @@ done < files_list.txt
 
 check file `macsyfinder/genome_1/best_solution_summary.tsv`
 
+If you want, you can combine all the results into a single file.
+```bash
+ grep -hv '^#' macsyfinder/*/best_solution_summary.tsv | grep -v '^$' | sed '1!{/^replicon/d}' >summary_all.tsv
+```
+
 ## Antismash (Secondary metabolites)
 
 If you're interested on the secondary metabolites your strain produces (such as antibiotics or other bioactive molecules)
@@ -129,9 +134,69 @@ for bakta_gbff in *.gbff; do antismash "$bakta_gbff" --taxon bacteria --output-d
 or
 
 ```bash
-for bakta_gbff in bakta/*.gbff; do name=$(basename "$bakta_gbff" .gbff); antismash "$bakta_gbff" --taxon bacteria --output-dir antismash_out/"$bakta_gbff" --cpus 8 --databases /scratch/$PROJECT//DATABASES/antismash_db --no-zip-output --cb-knownclusters --cb-subclusters --cc-mibig; done
+ mkdir -p antismash_out
+for bakta_gbff in gbff/*.gbff; do 
+name=$(basename "$bakta_gbff" .gbff)
+mkdir -p antismash_out/$bakta_gbff
+antismash "$bakta_gbff" --taxon bacteria --output-dir antismash_out/"$bakta_gbff" --cpus 8 \
+--databases /scratch/project_2020859/DATABASES/antismash_db --no-zip-output --cb-knownclusters --cb-subclusters --cc-mibig \
+--genefinding-tool prodigal
+done
+
+
+```
+
+summarise all antismash results
+```bash
+python /projappl/project_2020859/summarize_antismash.py antismash_out/ pseudomonas_antimash_output
 ```
 
 ## Ecological inference
 
 Can your isolate be found in other environments? Which environments? (https://branchwater.sourmash.bio/)
+
+
+## Optional eggnog_mapper functional annotation
+
+```bash
+mkdir -r eggnog_results
+ls bakta/proteins/*.faa > protein_list.txt
+```
+
+Run eggnog mapper with multiple genomes
+```bash
+#!/bin/bash
+#SBATCH --job-name=eggnog
+#SBATCH --account=project_2020859
+#SBATCH --partition=small
+#SBATCH --output=logs/eggnog_%A_%a.out
+#SBATCH --error=logs/eggnog_%A_%a.err
+#SBATCH --array=1-5
+#SBATCH --cpus-per-task=8
+#SBATCH --time=12:00:00
+#SBATCH --mem=32G
+
+
+
+module load bio-apps/v202603
+module load eggnog-mapper/2.1.15
+
+
+isolate=$(sed -n "${SLURM_ARRAY_TASK_ID}p" protein_list.txt)
+name=$(basename "$isolate" .faa)
+
+mkdir -p eggnog_results
+
+emapper.py -m diamond -i "$isolate" \
+    --itype proteins \
+    --data_dir /dataset/project_2020373/DATABASES/eggnog-data/eggnog-data \
+    --output_dir eggnog_results \
+    -o "$name" \
+    --cpu "$SLURM_CPUS_PER_TASK" \
+    --override
+```
+```bash
+#sbatch eggnog.sh
+```
+
+
